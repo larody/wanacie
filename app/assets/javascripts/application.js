@@ -15,6 +15,16 @@
 //= require_tree .
 
 $(function() {
+  $("#result th a, #result .pagination a").live("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+
+  $("#events_search input").keyup(function() {
+    $.get($("#events_search").attr("action"), $("#events_search").serialize(), null, "script");
+    return false;
+  });
+
   $('*')
     .ajaxStart   (function() {$('#progress').html('通信中...')})
     .ajaxComplete(function() {$('#progress').html('')});

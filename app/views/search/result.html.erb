@@ -1,7 +1,8 @@
 <div id='main'>
   <h1><%= t 'search.title' %></h1>
 
-  <%= form_tag(search_result_path, :remote => true) do %>
+  <%= form_tag(search_result_path, :method => 'get',
+                :id => 'events_search', :remote => true) do %>
     <div class="field">
       <%= t 'activerecord.attributes.event.place' %>
       <%= text_field_tag(:place, '', {:size => 16}) %>
@@ -15,6 +16,6 @@
   <% end %>
 
   <%# Area to display results %>
-  <div id="result"></div>
+  <div id="result"><%= render :partial => 'search_result' %></div>
 
 </div><!--End of main-->

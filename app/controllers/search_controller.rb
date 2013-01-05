@@ -6,7 +6,7 @@ class SearchController < ApplicationController
   def result
     @events = Event.where('place LIKE ? AND purpose LIKE ?',
                 "%#{params[:place]}%", "%#{params[:purpose]}%").
-                paginate(:page => params[:page], :per_page => 5)
+                paginate(:page => params[:page], :per_page => 1)
   end
 
 end

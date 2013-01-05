@@ -9,8 +9,10 @@ Wanacie::Application.routes.draw do
   match 'signin' => 'login#index', :via => :get, :as => :signin
   match 'signout' => 'login#logout', :via => :get, :as => :signout
   match 'settings/account' => 'users#edit', :via => :get, :as => :account
-  match 'search' => 'search#index', :via => :get, :as => :search_index
+
+  match 'search' => 'search#result', :via => :get, :as => :search
   match 'search/result', :via => :put
+
   match ':name' => 'users#show', :via => :get, :as => :user_by_name
 
   match 'about/:page' => 'pages#show', :via => :get, :as => :about
