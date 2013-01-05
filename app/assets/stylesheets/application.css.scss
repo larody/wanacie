@@ -1,0 +1,330 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+<!--
+$color: #333333;
+$font_size: 14px;
+$width: 950px;
+$sidebar_width: 300px;
+$bar_height: 40px;
+$bar_color: #24140e;
+
+html {
+  overflow: auto;
+}
+
+body {
+  height: 100%;
+  color: $color;
+  text-align: center;
+  background: ghostwhite;
+  font-size: $font_size;
+  line-height: 1.5em;
+  font-family: arial, Palatino, serif;
+  margin: 0;
+  padding: 0;
+}
+
+* html body {
+  overflow: hidden;
+}
+
+a {
+  color: red;
+  text-decoration: none;
+  &:visited {
+    color: red; }
+  &:hover {
+    color: $color;
+    text-decoration: underline; } }
+
+/*---container---------------------------------------*/
+#container {
+  position: relative;
+  height: 100%;
+  width: $width;
+  margin: 0 auto;
+  text-align: left;
+  background: whitesmoke;
+}
+
+/*---header---------------------------------------*/
+#header {
+  position: fixed !important;
+  position: absolute;
+    top: 0;
+    center: 0;
+  z-index: 2;
+  height: $bar_height;
+  width: 100%;
+  background: $bar_color;
+  margin: 0 -500%;
+  padding: 0 500%;
+}
+
+/*---HeaderMenu---------------------------------------*/
+$bar_font_color: gainsboro;
+
+#menu_bar {
+  height: $bar_height;
+  width: $width;
+  font-family: Optima;
+  background: $bar_color;
+}
+
+/*---MenuBar(Left)---------------------------------------*/
+#menu_bar_left {
+  height: $bar_height;
+  width: $width - 305; /*MAX395px*/
+  position: absolute;
+  top: 0;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  color: $bar_font_color;
+  line-height: $bar_height;
+  a {
+    color: $bar_font_color;
+    text-decoration: none;
+    &:visited {
+      color: $bar_font_color; }
+    &:hover {
+      color: $bar_font_color; } }
+  li {
+    float: left;
+    height: $bar_height;
+    padding: 0 0 0 10px;
+    list-style: none;
+    &.title {
+      text-align: left;
+      font-size: $font_size * 1.5;
+      color: $bar_font_color; }
+    &.copy {
+      padding: 0 0 0 15px;
+      text-align: left;
+      color: $bar_font_color; } } }
+
+/*---MenuBar(Right)---------------------------------------*/
+#menu_bar_right {
+  height: $bar_height;
+  float: right;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  color: $bar_font_color;
+  a {
+    color: $bar_font_color;
+    text-decoration: none;
+    &:visited {
+      color: $bar_font_color; }
+    &:hover {
+      color: red;
+      text-decoration: none; } }
+  ul {
+    height: $bar_height / 2;
+    list-style: none;
+    font-size: $font_size * 1.0;
+    font-weight: normal;
+    margin: $bar_height/4 0 0 0;
+    padding: 0;
+    text-align: right; }
+  li {
+    height: $bar_height / 2;
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+    &.column_user {
+      float: left;
+      width: 100px;
+      padding: 0 10px 0 0; }
+    &.column {
+      float: left;
+      padding: 0 10px 0 9px;
+      border-left: 1px solid darkslateblue; } } }
+
+/*---MenubarSpace---------------------------------------*/
+#menu_bar_space { margin: $bar_height 0 0 0; }
+
+/*---Banner---------------------------------------*/
+#banner {
+  $banner_padding_top: $bar_height + 0px;
+  position: relative;
+  width: $width;
+  height: 140px;
+  margin: 15px 0 0 0;
+  padding: 260px 0 0 0; /* pading_top + height = background_size_height */
+  border-bottom: 1px solid $bar_font_color;
+  background: white url("/assets/topimage3.jpg") no-repeat;
+  background-size: $width 400px; /* but should create a real sized image. */
+  p {
+    margin: 0;
+    padding: 5px 0 0 40px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    font-weight: bold;
+    font-size: $font_size * 1.4; }
+  ul {
+    margin: 20px 0 0 40px;
+    padding: 0;
+    li {
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none; } }
+  .button span {
+    margin: 0;
+    display: inline-block;
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: $font_size * 1.4;
+    font-weight: bold;
+    padding: 7px 50px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    background-image:
+      -moz-linear-gradient(
+        center top,
+        #9cbb1c 25%,
+        #65ab31 75% );
+    border: 1px solid #d1de4c;
+    text-shadow:
+      1px 1px 1px rgba(255,255,255,.3),
+      -1px -1px 1px rgba(0,0,0,.3);
+    text-decoration: none;
+      &:hover {
+        background-image:
+          -moz-linear-gradient(
+            center top,
+            #504946 25%,
+            $bar_color 75% ); } } }
+
+/*---main---------------------------------------*/
+#main {
+  position: relative;
+  width: $width - $sidebar_width - 20 - 20; /* - sidebar.padding(=10*2) - self.padding(=10*2) */
+  float: left;
+  margin: 0;
+  padding: 10px;
+  background: white;
+  .event {
+    margin: 0px 0 12px 0;
+    padding: 10px 5px 10px 5px;
+    border-left: 5px solid #eee8aa;
+    border-right: 5px solid #eee8aa;
+    border-bottom: 1px solid $bar_font_color;
+    border-top: 1px solid $bar_font_color;
+    background: white;
+    .title {
+      a {
+        color: $color;
+        &:visited { color: $color;} } } }
+  .comments {
+    margin: 0px 0 0px 0;
+    padding: 10px 5px 10px 5px;
+    border-bottom: 1px solid $bar_font_color;
+    background: white; }
+  .userinfo {
+    a {
+      color: $color;
+      &:visited { color: $color; } }
+    p.username {
+      font-size: $font_size * 1.5;
+      font-weight: bold;
+      a {
+        &:hover { text-decoration: none; } } } }
+  p {
+    margin: 0;
+    padding: 5px 0 5px 0;
+    &.title {
+      padding: 0 0 0 2px;
+      font-weight: bold; }
+    &.crud {
+      padding: 0;
+      font-size: $font_size * 0.9;
+      span {
+        &.user {
+          color: darkgray; }
+        &.posted {
+          padding: 0 0 0 5px;
+          color: darkgray; } } }
+    &.footer {
+      color: red; } } }
+
+/*---sidebar---------------------------------------*/
+#sidebar {
+  width: $sidebar_width;
+  float: left;
+  margin: 0;
+  padding: 10px;
+  background: white;
+}
+
+#sidebar ul {
+  margin: 10px 0 10px 0;
+  padding: 0;
+  text-align: center;
+}
+
+#sidebar login {
+  padding: 5px;
+}
+
+#sidebar .button span {
+  margin: 0;
+  display: inline-block;
+  border-style: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-family: Optima;
+  font-size: $font_size * 1.3;
+  font-weight: bold;
+  padding: 10px 65px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  background-image:
+    -moz-linear-gradient(
+       center top,
+       #a7d28d 25%,
+       #37a34a 75%
+    );
+  border: 1px solid #669;
+  text-shadow:
+    1px 1px 1px rgba(255,255,255,.3),
+    -1px -1px 1px rgba(0,0,0,.3);
+  text-decoration: none;
+}
+
+/*---footer---------------------------------------*/
+#footer {
+  width: 100%;
+  clear: both;
+  text-align: center;
+  color: $bar_font_color;
+  background: $bar_color;
+  margin: 0;
+  padding: 0;
+  p {
+    &.menu {
+      margin: 0;
+      padding: 5px 2px 0 2px; }
+    &.copyright {
+      margin: 0;
+      padding: 1.5em 2px 1.5em 2px; } } }
+
+-->

@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  purpose: お茶
+  held_datetime: <%= Time.now + 10*60*60 %>
+  place: 木場
+  msg: 
+
+two:
+  purpose: 飲み
+  held_datetime: <%= Time.now + 12*60*60 %>
+  place: 東京
+  msg: 軽く飲みませんか？
+
+three:
+  purpose: 飲み
+  held_datetime: <%= Time.now + 5*30*60 %>
+  place: 有楽町
+  msg: 軽く飲みませんか？有楽町ですが、8時から2人の予定です。引き続き募集します。外出中Gmailが使えないのでこちらにお願いします。 
+
+four:
+  purpose: カラオケ
+  held_datetime: <%= Time.now + 2*30*60 %>
+  place: 新宿三丁目
+  msg: オール出来る人
+
+five:
+  purpose: お茶
+  held_datetime: <%= Time.now + 7*30*60 %>
+  place: 三軒茶屋
+  msg: 朝マックとか
+
+six:
+  purpose: 食事
+  held_datetime: <%= Time.now + 4*30*60 %>
+  place: 東小金井
+  msg: ご飯食べましょ！
+
+seven:
+  purpose: 食事
+  held_datetime: <%= Time.now + 12*60*60 %>
+  place: 池袋
+  msg: 誰かいませんか？池袋あたりHUBでサクッとどうでしょ。後は流れに任せます。
+
+eight:
+  purpose: お茶
+  held_datetime: <%= Time.now + 14*30*60 %>
+  place: 恵比寿
+  msg: どなたか
+
+nine:
+  purpose: カラオケ
+  held_datetime: <%= Time.now + 10*30*60 %>
+  place: 青山
+  msg: ディズニー好き、映画、音楽好き、という方歓迎です。１９時半からを予定してますが、途中参加でも大丈夫です。現在自分含め２人です。

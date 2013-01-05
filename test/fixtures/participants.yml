@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event: one 
+  user: jessica
+  organizer: true
+
+two:
+  event: two
+  user: anna
+  organizer: true
+
+three:
+  event: three
+  user: maomi
+  organizer: true
+
+four:
+  event: four
+  user: angelina
+  organizer: true
+
+five:
+  event: five
+  user: denise
+  organizer: true
+
+six:
+  event: six
+  user: victoria
+  organizer: true
+
+seven:
+  event: seven
+  user: victoria
+  organizer: true
+
+eight:
+  event: eight
+  user: angelina
+  organizer: true
+
+nine:
+  event: nine
+  user: anna
+  organizer: true
+

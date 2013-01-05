@@ -1,0 +1,89 @@
+<div id='main'>
+  <p id="notice"><%= notice %></p>
+
+  <div class='event'>
+    <% date = @event.held_datetime.to_date == Time.now.to_date ? @event.held_datetime.strftime("%H時%M分") :
+      @event.held_datetime.strftime("%d日(#{%w(日 月 火 水 木 金 土)[@event.held_datetime.wday]}) %H時%M分") %>
+    <% title = date + '開始 ' + @event.purpose + ' @ ' + @event.place %>
+
+    <p class='title'><%= link_to title, @event %></p>
+    <p class='message'><%= @event.msg %></p>
+    <p class='crud'>
+      <%# Get information about the organizer from users %>
+      <% p = Participant.where(:event_id => @event.id, :organizer => true).select('user_id, created_at').first %>
+      <% organizer = User.find(p.user_id) %>
+      <span class='user'>by <%= link_to organizer.name, user_by_name_path(organizer.name) %></span>
+      <span class='posted'><%= time_ago_in_words(p.created_at) %></span>
+
+      <% if session[:user_id] and (organizer.id != session[:user_id]) %>
+        <% if Participant.exists?({:event_id => @event.id, :user_id => session[:user_id]}) %>
+          <% p_num = Participant.where(:event_id => @event.id, :organizer => false).count
+            p_str = p_num > 0 ? '(' + p_num.to_s + ')' : '' %>
+          <%= link_to '参加中！' + p_str, @event %> | 
+        <% else %>
+          <% p_num = Participant.where(:event_id => @event.id, :organizer => false).count
+            p_str = p_num > 0 ? '(' + p_num.to_s + ')' : '' %>
+          <%= link_to '参加したい！' + p_str,
+            { :controller => 'events', :id => @event.id,  :action => 'join' },
+            confirm: '参加しますか？', :method => :post %> | 
+        <% end %>
+      <% end %>
+
+      <% if organizer.id == session['user_id'] %>
+        <span>|</span>
+        <span><%= link_to 'しめきる', edit_event_path(@event) %></span>
+      <% end %>
+    </p>
+  </div><!--End of event-->
+
+  <%# Display participants %>
+  <div id='participants'>
+    <% participants = Participant.where(:event_id => @event.id, :organizer => false).select('user_id') %>
+    <p><span><%= t 'events.participant' %>(<%= participants.size %><%= t 'events.unit' %>): </span>
+    <% participants.each do |p| %>
+      <% user = User.find(p.user_id) %>
+      <span><%= link_to user.name, user_by_name_path(user.name) %></span>
+    <% end %>
+    </p>
+  </div>
+
+  <%# Display already posted comments %>
+  <div class='comment'>
+    <% @comments.each do |c| %>
+      <%= simple_format(c.msg, {:class => 'message'}) %>
+      <p class='crud'>
+        <span class='user'>by <%= User.find(c.user_id).name %></span>
+        <span class='posted'><%= time_ago_in_words(c.created_at) %></span>
+      </p>
+    <% end %>
+  </div>
+
+  <%= form_for(@comment) do |f| %>
+    <% if @comment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+        <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <p id="alert"><%= alert %></p>
+
+    <div class="field">
+      <%= f.label (t 'events.to_comment') %><br />
+      <%= f.text_area :msg, :cols => 60, :rows => 3 %>
+    </div>
+    <%= f.hidden_field :event_id, :value => @event.id %>
+    <%= f.hidden_field :user_id, :value => session['user_id'] %>
+
+    <div class="actions">
+      <%= f.submit (t 'events.comment_button') %>
+    </div>
+  <% end %><%# End of form %>
+
+  </div><!--End of comment_form-->
+
+</div><!--End of main-->

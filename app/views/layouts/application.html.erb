@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= t 'general.title' %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id='container'>
+
+<div id='header'>
+<div id='menu_bar'>
+<div id='menu_bar_left'><li class='title'><%= link_to (t 'general.title'), root_path %></li>
+<!--<li class='copy'><%= t 'general.description' %></li>-->
+</div><!--End of menu_bar_left-->
+<div id='menu_bar_right'>
+<ul>
+<% if session[:user_id] %>
+  <% user = User.find(session[:user_id]) %>
+  <li class='column_user'><%= link_to user.name, user_by_name_path(user.name) %></li>
+  <li class='column'><%= link_to (t 'general.signout'), signout_path %></li>
+<% else %>
+  <li class='column'><%= link_to (t 'general.signin'), signin_path %></li>
+  <li class='column'><%= link_to (t 'general.signup'), signup_path %></li>
+<% end %>
+<li class='column'><%= link_to (t 'general.help'), root_path %></li>
+</ul>
+</div><!--End of menu_bar_right-->
+</div><!--End of menu_bar-->
+</div><!--End of header-->
+
+<div id='menu_bar_space'></div>
+
+<%= yield %>
+
+<div id='sidebar'>
+
+<% if session[:user_id] %>
+<ul><a class='button' href='<%= new_event_path %>'><span><%= t 'general.ask' %></span></a></ul>
+<ul><%= link_to 'アカウント情報変更', account_path %></ul>
+<% end %>
+</div><!--End of sidebar-->
+
+</div><!--End of container-->
+
+<div id='footer'>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="larody">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<p class='menu'><%= t 'footer.top' %> | <%= t 'footer.whatsthis' %> | <%= t 'footer.policy' %> | <%= t 'footer.aboutus' %> | <%= t 'footer.contact' %></p>
+<p class='copyright'><%= link_to (t 'footer.whatsthis'), about_path('here') %> Copyright © <%= Time.now.year %> wanacie! All rights reserved.</p>
+</div><!--End of footer-->
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+system:
+  name: system
+  password: 
+  email: system.admin@gmail.com
+
+jessica:
+  name: jessica
+  password: 1e139c0ce55a079f4e7e2beb42c7659b57a6834b 
+  email: jessica.alba@gmail.com
+
+maomi:
+  name: maomi
+  password: 0879caa1220bc09cb3b7fc73c17d8c26eb31233f 
+  email: maomi.yuuki@gmail.com
+
+anna:
+  name: anna
+  password: 94428b33d3f6e4bf8bce51513a58fda4ba1d9a5a 
+  email: anna@gmail.com
+
+victoria:
+  name: victoria
+  password: d16c68a2ee6e7d0e6c639aa43a04432b6103aff5 
+  email: victoria.justice@gmail.com
+
+denise:
+  name: denise
+  password: 04d2b2b7d93d92f2b979f0819ff68b8b95a1c1f6 
+  email: denise.richards@gmail.com
+
+angelina:
+  name: angelina
+  password: 07877b393032ad4fc9cce7ed80f31d4ddc6c948a 
+  email: angelina.jolie@gmail.com

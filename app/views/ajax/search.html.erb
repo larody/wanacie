@@ -1,0 +1,9 @@
+<%= form_tag( ajax_result_path, :remote => true ) do %>
+  <%= select_tag('place', options_from_collection_for_select(
+    @events, :place, :place, '木場')) %>
+  <%= submit_tag '検索' %>
+  <!--Area to display Progress-->
+  <span id="progress"></span>
+<% end %>
+<!--Area to display results-->
+<div id="result"></div>

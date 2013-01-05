@@ -1,0 +1,34 @@
+<div id='main'>
+<p id="notice"><%= notice %></p>
+
+<div class='userinfo'>
+  <p class='username'><%= link_to @user.name, user_by_name_path(@user.name) %></p>
+
+  <p><%= t 'users.history' %></p>
+  <% if @participants.size > 0 %>
+    <% @participants.each do |p| %>
+      <% e = Event.find(p.event_id) %>
+        <% date = e.held_datetime.to_date == Time.now.to_date ? e.held_datetime.strftime("%H時%M分") :
+          e.held_datetime.strftime("%d日(#{%w(日 月 火 水 木 金 土)[e.held_datetime.wday]}) %H時%M分") %>
+        <% title = date + (t 'events.start') + ' ' + e.purpose + ' @ ' + e.place %>
+      <div class='event'>
+        <p class='title'><%= link_to title, e %></span>
+        <p class='crud'>
+          <%# Get information about the organizer from users %>
+          <% p2 = Participant.where(:event_id => e.id, :organizer => true).select('user_id, created_at').first %>
+          <% organizer = User.find(p2.user_id) %>
+          <span class='user'>by <%= link_to organizer.name, user_by_name_path(organizer.name) %></span>
+          <span class='posted'><%= time_ago_in_words(p2.created_at) %></span>
+        </p>
+      </div>
+    <% end %>
+
+    <p class='footer'><%= will_paginate @participants,
+      :previous_label => (t 'general.paginate.pre'), :next_label => (t 'general.paginate.next') %></p>
+
+  <% else %>
+    <p><%= t 'users.no_history' %></p>
+  <% end %>
+
+</div><!--End of userinfo-->
+</div><!--End of main-->
