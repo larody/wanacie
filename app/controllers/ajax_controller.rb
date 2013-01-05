@@ -10,7 +10,7 @@ class AjaxController < ApplicationController
   end
 
   def result
-    sleep(2)
+  # sleep(2)
     @events = Event.where(:place => params[:place])
   end
 

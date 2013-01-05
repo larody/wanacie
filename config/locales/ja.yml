@@ -39,6 +39,10 @@ ja:
     history: 主催・参加イベント
     no_history: まだ参加/主催イベントはありません。
 
+  search:
+    title: 検索
+    
+
   footer:
     top: トップ
     about:
