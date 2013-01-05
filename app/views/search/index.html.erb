@@ -1,0 +1,20 @@
+<div id='main'>
+  <h1><%= t 'search.title' %></h1>
+
+  <%= form_tag(search_result_path, :remote => true) do %>
+    <div class="field">
+      <%= t 'activerecord.attributes.event.place' %>
+      <%= text_field_tag(:place, '', {:size => 16}) %>
+      <%= t 'activerecord.attributes.event.purpose' %>
+      <%= text_field_tag(:purpose, '', {:size => 16}) %>
+      <%= submit_tag '検索' %>
+
+    <%# Area to display Progress %>
+    <span id="progress"></span>
+    </div>
+  <% end %>
+
+  <%# Area to display results %>
+  <div id="result"></div>
+
+</div><!--End of main-->

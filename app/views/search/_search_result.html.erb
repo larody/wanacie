@@ -1,0 +1,36 @@
+<% @events.each do |e| %>
+  <% date = e.held_datetime.to_date == Time.now.to_date ? e.held_datetime.strftime("%H時%M分") :
+    e.held_datetime.strftime("%d日(#{%w(日 月 火 水 木 金 土)[e.held_datetime.wday]}) %H時%M分") %>
+  <% title = date + (t 'events.start') + ' ' + e.purpose + ' @ ' + e.place %>
+  <div class='event'>
+    <p class='title'><%= link_to title, e %></p>
+    <p class='message'><%= e.msg %></p>
+    <p class='crud'>
+      <%# Get information about the organizer from users %>
+      <% p = Participant.where(:event_id => e.id, :organizer => true).select('user_id, created_at').first %>
+      <% organizer = User.find(p.user_id) %>
+      <span class='user'>by <%= link_to organizer.name, user_by_name_path(organizer.name) %></span>
+      <span class='posted'><%= time_ago_in_words(p.created_at) %></span>
+
+    <% if session[:user_id] and (organizer.id != session[:user_id]) %>
+      <% if Participant.exists?({:event_id => e.id, :user_id => session[:user_id]}) %>
+        <% p_num = Participant.where(:event_id => e.id, :organizer => false).count
+          p_str = p_num > 0 ? '(' + p_num.to_s + ')' : '' %>
+        <%= link_to (t 'events.is_joined') + p_str, e %> | 
+      <% else %>
+        <% p_num = Participant.where(:event_id => e.id, :organizer => false).count
+          p_str = p_num > 0 ? '(' + p_num.to_s + ')' : '' %>
+        <%= link_to (t 'events.is_not_joined') + p_str,
+          { :controller => 'events', :id => e.id,  :action => 'join' },
+          confirm: (t 'events.joinning_confirmation'), :method => :post %> | 
+      <% end %>
+    <% end %>
+    <% c_num = Comment.where(:event_id => e.id).count
+      c_str = c_num > 0 ? '(' + c_num.to_s + ')' : '' %>
+    <%= link_to (t 'events.detail') + c_str, e %>  
+    </p>
+  </div><!--End of event-->
+<% end %>
+
+<p class='footer'><%= will_paginate @events,
+  :previous_label => (t 'general.paginate.pre'), :next_label => (t 'general.paginate.next') %></p>
