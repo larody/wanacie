@@ -13,4 +13,4 @@ assets/images/*
 config/environments
 config/database.yml
 config/application.rb
-github.rb
+push2git.rb
