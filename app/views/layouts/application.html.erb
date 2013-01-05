@@ -48,8 +48,7 @@
 <div id='footer'>
 <a href="https://twitter.com/share" class="twitter-share-button" data-via="larody">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<p class='menu'><%= t 'footer.top' %> | <%= t 'footer.whatsthis' %> | <%= t 'footer.policy' %> | <%= t 'footer.aboutus' %> | <%= t 'footer.contact' %></p>
-<p class='copyright'><%= link_to (t 'footer.whatsthis'), about_path('here') %> Copyright © <%= Time.now.year %> wanacie! All rights reserved.</p>
+<p class='copyright'>© <%= Time.now.year %> wanacie! <%= link_to (t 'footer.about.here'), about_path('here') %> <%= link_to '@larody', 'https://twitter.com/larody', :target => '_blank' %></p>
 </div><!--End of footer-->
 
 </body>

@@ -246,6 +246,24 @@ $bar_font_color: gainsboro;
       font-weight: bold;
       a {
         &:hover { text-decoration: none; } } } }
+  .article {
+    margin: 0 0 15px 0;
+    h3.title {
+      margin: 0 0 10px 0;
+      padding: 0;
+      font-size: 1.25em;
+      border-bottom: 1px solid pink; }
+    p.message {
+      margin: 0 0 0 5px;
+      padding: 0; } }
+  .article-internal {
+    margin: 0; 
+    h4.title {
+      margin: 0 0 5px 10px;
+      font-size: 1.1em;
+      border-bottom: 1px solid orange; } }
+  ol { margin: 0; }
+  ul { margin: 0; }
   p {
     margin: 0;
     padding: 5px 0 5px 0;
@@ -319,6 +337,11 @@ $bar_font_color: gainsboro;
   background: $bar_color;
   margin: 0;
   padding: 0;
+  a {
+    color: $bar_font_color;
+    &:hover {
+      color: red;
+      text-decoration: none; } }
   p {
     &.menu {
       margin: 0;

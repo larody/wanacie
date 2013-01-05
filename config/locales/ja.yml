@@ -40,11 +40,12 @@ ja:
     no_history: まだ参加/主催イベントはありません。
 
   footer:
-    top: 'トップ'
-    whatsthis: 'wanacie!について'
-    policy: 'プライバシーポリシー'
-    aboutus: '運営者情報'
-    contact: 'お問い合わせ'
+    top: トップ
+    about:
+      here: このサイトについて
+      policy: プライバシーポリシー
+      us: 運営者情報
+      contact: お問い合わせ
 
   date:
     abbr_day_names:
