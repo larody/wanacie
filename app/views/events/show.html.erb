@@ -58,10 +58,10 @@
     </div>
   <% end %>
 
-  <%= form_for(@comment) do |f| %>
+  <%= form_for(@comment, :url => url_for(:action => 'comment')) do |f| %>
+   
     <% if @comment.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
         <ul>
         <% @comment.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -69,8 +69,6 @@
         </ul>
       </div>
     <% end %>
-
-    <p id="alert"><%= alert %></p>
 
     <div class="field">
       <%= f.label (t 'events.to_comment') %><br />

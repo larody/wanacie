@@ -1,5 +1,5 @@
 Wanacie::Application.routes.draw do
-  resources :comments 
+# resources :comments 
   resources :users, :except => ['show', 'edit']
   resources :events
 

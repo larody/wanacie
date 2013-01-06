@@ -21,11 +21,28 @@ class EventsController < ApplicationController
     @comments = Comment.find_all_by_event_id(@event.id)
     @comment = Comment.new
 
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
     end
+  end
+
+  def comment
+    @comment = Comment.new(params[:comment])
+    @event = Event.find(@comment.event_id)
+
+    # if this isn't exist, it gets no method error.
+    @comments = Comment.find_all_by_event_id(@event.id)
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to @event, notice: 'Comment was successfully created.' }
+        format.json { render json: @event, status: :created, location: @comment }
+      else
+        format.html { render 'show' }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end 
+    end 
   end
 
   # GET /events/new

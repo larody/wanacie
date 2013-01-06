@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1
   # GET /comments/1.json
+=begin
   def show
     @comment = Comment.find(params[:id])
 
@@ -23,17 +24,10 @@ class CommentsController < ApplicationController
         format.html { redirect_to event, notice: 'Comment was successfully created.' }
         format.json { render json: event, status: :created, location: @comment }
       else
-        
-      #flash.now[:referer] = params[:referer]
-      # @error = 'ユーザ名かパスワードが誤っています。'
-      #render 'events/show'
-
-
-      # format.html { render 'events/show' }
-        format.html { redirect_to event, alert: "Comment can't be blank." }
+        format.html { redirect_to event, alert: @comment.errors[:msg] }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
-
+=end
 end
