@@ -1,34 +1,36 @@
-<%= form_for(@event) do |f| %>
+<div id='event_form'>
 
-<%#  <%= errors_for(@event).html_safe %>
+  <%= form_for(@event) do |f| %>
 
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <% if @event.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :purpose, "何する？(お茶したい、ご飯したい、など) *" %><br />
+      <%= f.text_field :purpose, :size => 30, :maxlength => 30 %>
+    </div>
+    <div class="field">
+      <%= f.label :held_datetime, "何時から？(24時間以内を指定) *" %><br />
+      <%= f.time_select :held_datetime, :default => Time.now + 30.minutes, :minute_step => 10 %>
+    </div>
+    <div class="field">
+      <%= f.label :place, "どこで？ *" %><br />
+      <%= f.text_field :place, :size => 30, :maxlength => 30 %>
+    </div>
+    <div class="field">
+      <%= f.label :msg, "メッセージあれば。" %><br />
+      <%= f.text_area :msg, :cols => 36, :rows => 4 %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Post' %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :purpose, "何する？(お茶したい、ご飯したい、など) *" %><br />
-    <%= f.text_field :purpose, :size => 30, :maxlength => 30 %>
-  </div>
-  <div class="field">
-    <%= f.label :held_datetime, "何時から？(24時間以内を指定) *" %><br />
-    <%= f.time_select :held_datetime, :default => Time.now + 30.minutes, :minute_step => 10 %>
-  </div>
-  <div class="field">
-    <%= f.label :place, "どこで？ *" %><br />
-    <%= f.text_field :place, :size => 30, :maxlength => 30 %>
-  </div>
-  <div class="field">
-    <%= f.label :msg, "メッセージあれば。" %><br />
-    <%= f.text_area :msg, :cols => 36, :rows => 4 %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Post' %>
-  </div>
-<% end %>
+</div>

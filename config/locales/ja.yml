@@ -3,15 +3,16 @@
 
 ja:
   general:
-    title: 'wanacie!'
-    description1: 'wanacie! は、「今から誰かと何かしたい！」を支援します。'
-    description2: 'さあ、あなたも誰かとプライスレスな一期一会を築いてみよう!'
-    start: 'はじめる！'
-    signin: 'ログイン'
-    signout: 'ログアウト'
-    signup: 'ユーザ登録'
-    help: 'ヘルプ'
-    ask: '募集をかける!'
+    title: wanacie!
+    description1: wanacie! は、「今から誰かと何かしたい！」を支援します。
+    description2: さあ、あなたも誰かとプライスレスな一期一会を築いてみよう!
+    start: はじめる！
+    signin: ログイン
+    signout: ログアウト
+    signup: ユーザ登録
+    help: ヘルプ
+    ask: 募集をかける!
+    search: 募集をさがす!
     paginate:
       pre: ◀
       next: ▶
@@ -32,7 +33,7 @@ ja:
     to_comment: この募集にコメントする
     comment_button: コメント
     start: 開始
-    upcoming: 募集中のイベント
+    upcoming: 直近のイベント
 
   users:
     new: さあはじめよう！
@@ -40,7 +41,7 @@ ja:
     no_history: まだ参加/主催イベントはありません。
 
   search:
-    title: 検索
+    title: 参加するイベントをさがそう！
     
 
   footer:

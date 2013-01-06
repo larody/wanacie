@@ -39,6 +39,7 @@
 
 <% if session[:user_id] %>
 <ul><a class='button' href='<%= new_event_path %>'><span><%= t 'general.ask' %></span></a></ul>
+<ul><a class='button' href='<%= search_path %>'><span><%= t 'general.search' %></span></a></ul>
 <ul><%= link_to 'アカウント情報変更', account_path %></ul>
 <% end %>
 </div><!--End of sidebar-->

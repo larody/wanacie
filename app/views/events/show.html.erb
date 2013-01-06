@@ -48,15 +48,15 @@
   </div>
 
   <%# Display already posted comments %>
-  <div class='comment'>
-    <% @comments.each do |c| %>
+  <% @comments.each do |c| %>
+    <div class='comment'>
       <%= simple_format(c.msg, {:class => 'message'}) %>
       <p class='crud'>
         <span class='user'>by <%= User.find(c.user_id).name %></span>
         <span class='posted'><%= time_ago_in_words(c.created_at) %></span>
       </p>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <%= form_for(@comment) do |f| %>
     <% if @comment.errors.any? %>

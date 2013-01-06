@@ -49,6 +49,8 @@ a {
     color: $color;
     text-decoration: underline; } }
 
+div { word-wrap: break-word; }
+
 /*---container---------------------------------------*/
 #container {
   position: relative;
@@ -223,8 +225,8 @@ $bar_font_color: gainsboro;
   .event {
     margin: 0px 0 12px 0;
     padding: 10px 5px 10px 5px;
-    border-left: 5px solid #eee8aa;
-    border-right: 5px solid #eee8aa;
+    border-left: 5px solid palegoldenrod;
+    border-right: 5px solid palegoldenrod;
     border-bottom: 1px solid $bar_font_color;
     border-top: 1px solid $bar_font_color;
     background: white;
@@ -232,11 +234,13 @@ $bar_font_color: gainsboro;
       a {
         color: $color;
         &:visited { color: $color;} } } }
-  .comments {
-    margin: 0px 0 0px 0;
+  .comment {
+    margin: 0px 0 5px 0;
     padding: 10px 5px 10px 5px;
     border-bottom: 1px solid $bar_font_color;
-    background: white; }
+    border: solid 1px palegoldenrod;
+    border-radius: 7px;
+    background: beige; }
   .userinfo {
     a {
       color: $color;
@@ -281,6 +285,30 @@ $bar_font_color: gainsboro;
           color: darkgray; } } }
     &.footer {
       color: red; } } }
+
+#events_search {
+  border: solid 5px palegoldenrod;
+  border-radius: 10px;
+  background-color: beige;
+  margin-bottom: 15px; 
+  padding: 25px 0px 25px 10px;
+}
+
+#event_form {
+  margin-bottom: 15px; 
+  padding: 25px 0px 25px 10px;
+
+  border: solid 5px palegoldenrod;
+  border-radius: 10px;
+  background-color: beige;
+
+  font-size: 1.1em;
+  input {
+    font-size: 1.2em;
+    height: 1.8em; }
+  textarea {
+    font-size: 1.1em; }
+}
 
 /*---sidebar---------------------------------------*/
 #sidebar {
