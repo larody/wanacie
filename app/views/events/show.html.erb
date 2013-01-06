@@ -49,7 +49,7 @@
 
   <%# Display already posted comments %>
   <% @comments.each do |c| %>
-    <div class='comment'>
+    <div class="<%= div = c.msg == '参加します！' ? 'join_comment' : 'comment' %>">
       <%= simple_format(c.msg, {:class => 'message'}) %>
       <p class='crud'>
         <span class='user'>by <%= User.find(c.user_id).name %></span>

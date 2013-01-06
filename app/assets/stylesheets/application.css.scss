@@ -19,6 +19,7 @@ $width: 950px;
 $sidebar_width: 300px;
 $bar_height: 40px;
 $bar_color: #24140e;
+$bar_font_color: silver;
 
 html {
   overflow: auto;
@@ -76,8 +77,6 @@ div { word-wrap: break-word; }
 }
 
 /*---HeaderMenu---------------------------------------*/
-$bar_font_color: gainsboro;
-
 #menu_bar {
   height: $bar_height;
   width: $width;
@@ -101,7 +100,7 @@ $bar_font_color: gainsboro;
     &:visited {
       color: $bar_font_color; }
     &:hover {
-      color: $bar_font_color; } }
+      color: white; } }
   li {
     float: left;
     height: $bar_height;
@@ -130,7 +129,7 @@ $bar_font_color: gainsboro;
     &:visited {
       color: $bar_font_color; }
     &:hover {
-      color: red;
+      color: white;
       text-decoration: none; } }
   ul {
     height: $bar_height / 2;
@@ -237,11 +236,16 @@ $bar_font_color: gainsboro;
         &:visited { color: $color;} } } }
   .comment {
     margin: 0px 0 5px 0;
-    padding: 10px 5px 10px 5px;
-    border-bottom: 1px solid $bar_font_color;
+    padding: 3px 5px 3px 5px;
     border: solid 1px palegoldenrod;
     border-radius: 7px;
     background: beige; }
+  .join_comment {
+    margin: 0px 0 5px 0;
+    padding: 3px 5px 3px 5px;
+    border: solid 1px darkorange;
+    border-radius: 7px;
+    background: peachpuff; }
   .userinfo {
     a {
       color: $color;
@@ -369,7 +373,7 @@ $bar_font_color: gainsboro;
   a {
     color: $bar_font_color;
     &:hover {
-      color: red;
+      color: white;
       text-decoration: none; } }
   p {
     &.menu {
