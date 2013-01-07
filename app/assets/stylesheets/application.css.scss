@@ -13,6 +13,7 @@
  */
 
 <!--
+/*---Common---------------------------------------*/
 $color: #333333;
 $font_size: 14px;
 $width: 950px;
@@ -51,6 +52,9 @@ a {
     text-decoration: underline; } }
 
 div { word-wrap: break-word; }
+
+.labelfocus{ color: deeppink; }
+.focus{ color: #ccc }
 
 /*---container---------------------------------------*/
 #container {
@@ -225,11 +229,11 @@ div { word-wrap: break-word; }
     margin: 0px 0 7px 0;
     padding: 10px 5px 10px 5px;
     border-left: 6px solid palegoldenrod;
-    border-right: 6px solid palegoldenrod;
-    border-bottom: 1px solid $bar_font_color;
-    border-top: 1px solid $bar_font_color;
+    border-right: 1px solid palegoldenrod;
+    border-bottom: 1px solid palegoldenrod;
+    border-top: 1px solid palegoldenrod;
     border-radius: 7px;
-    background: white;
+    background: snow;
     .title {
       a {
         color: $color;

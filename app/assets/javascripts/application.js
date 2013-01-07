@@ -25,6 +25,20 @@ $(function() {
     return false;
   });
 
+/*  $(".event").click(function(){
+    window.location=$(this).find("a").attr("href"); 
+    return false;
+  });
+*/
+
+  $("form :input").focus(function() {
+    $("label[for='" + this.id + "']").addClass("labelfocus");
+  });
+
+  $("form :input").blur(function() {
+    $("label[for='" + this.id + "']").removeClass("labelfocus");
+  });
+
   $('*')
     .ajaxStart   (function() {$('#progress').html('通信中...')})
     .ajaxComplete(function() {$('#progress').html('')});

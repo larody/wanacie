@@ -40,10 +40,10 @@
   <div id='participants'>
     <% participants = Participant.where(:event_id => @event.id, :organizer => false).select('user_id') %>
     <p><span><%= t 'events.participant' %>(<%= participants.size %><%= t 'events.unit' %>): </span>
-    <% participants.each do |p| %>
-      <% user = User.find(p.user_id) %>
-      <span><%= link_to user.name, user_by_name_path(user.name) %></span>
-    <% end %>
+      <% participants.each do |p| %>
+        <% user = User.find(p.user_id) %>
+        <span><%= link_to user.name, user_by_name_path(user.name) %></span>
+      <% end %>
     </p>
   </div>
 
@@ -52,7 +52,8 @@
     <div class="<%= div = c.msg == '参加します！' ? 'join_comment' : 'comment' %>">
       <%= simple_format(c.msg, {:class => 'message'}) %>
       <p class='crud'>
-        <span class='user'>by <%= User.find(c.user_id).name %></span>
+        <% user = User.find(c.user_id) %>
+        <span class='user'>by <%= link_to user.name, user_by_name_path(user.name) %></span>
         <span class='posted'><%= time_ago_in_words(c.created_at) %></span>
       </p>
     </div>
