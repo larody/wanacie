@@ -27,20 +27,30 @@ ja:
     is_not_joined: 参加したい！
     is_joined: 参加中！
     detail: 内容を見る
-    joinning_confirmation: 参加しますか？
-    participant: 参加者
-    unit: 人
-    to_comment: この募集にコメントする
-    comment_button: コメント
+    join_confirmation: 参加しますか？
     start: 開始
-    upcoming: 直近のイベント
+    index:
+      title: 直近のイベント
+    new: # page
+      title: 募集をかけよう！
+    form: # page
+      purpose: 何する？(お茶したい、ご飯したい、など)
+      place: どこで？
+      held_datetime: 何時から？(24時間以内を指定)
+      msg: メッセージあれば。
+    show: # page
+      participant: 参加者
+      unit: 人
+      to_comment: この募集にコメントする
 
   users:
     new: さあはじめよう！
     history: 主催・参加イベント
     no_history: まだ参加/主催イベントはありません。
+    edit:
+      title: ユーザ情報変更
 
-  search:
+  search: # page
     title: 参加するイベントをさがそう！
     
 
@@ -181,9 +191,11 @@ ja:
     select:
       prompt: 選択してください。
     submit:
-      create: 登録する
-      submit: 保存する
-      update: 更新する
+      create: 登録
+      submit: 保存
+      update: 更新
+      search: 検索
+      comment: コメント
   number:
     currency:
       format:

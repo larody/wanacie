@@ -3,11 +3,11 @@
 
   <%= form_tag(search_result_path, :method => 'get', :id => 'events_search', :remote => true) do %>
     <div class="field">
-      <%= label_tag :place %>
+      <%= label_tag :place, t('activerecord.attributes.event.place') %>
       <%= text_field_tag(:place, '', {:size => 16}) %>
-      <%= label_tag :purpose %>
+      <%= label_tag :purpose, t('activerecord.attributes.event.purpose') %>
       <%= text_field_tag(:purpose, '', {:size => 16}) %>
-      <%= submit_tag '検索' %>
+      <%= submit_tag t('helpers.submit.search') %>
 
     <%# Area to display Progress %>
     <span id="progress"></span>

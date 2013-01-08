@@ -1,5 +1,5 @@
 <div id='main'>
-<h1>ユーザ情報変更</h1>
+<h1><%= t '.title' %></h1>
 
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
@@ -29,7 +29,7 @@
     <%= f.email_field :email %>
   </div>  
   <div class="actions">
-    <%= f.submit '更新する' %>
+    <%= f.submit %>
   </div>  
 <% end %>
 </div><!--End of main-->
