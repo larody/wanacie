@@ -25,7 +25,8 @@ $(function() {
     return false;
   });
 
-/*  $(".event").click(function(){
+/*  to be DIV clickable
+ *  $(".event").click(function(){
     window.location=$(this).find("a").attr("href"); 
     return false;
   });
@@ -39,7 +40,16 @@ $(function() {
     $("label[for='" + this.id + "']").removeClass("labelfocus");
   });
 
+  /* jQuery.timepicker
+   *$("#timepicker").timepicker({
+    'setTime': new Date(),
+    'forceRoundTime': true,
+    'scrollDefaultNow': true,
+    'step': 10
+  });
+  */
+
   $('*')
-    .ajaxStart   (function() {$('#progress').html('通信中...')})
+    .ajaxStart   (function() {$('#progress').html('<i class="icon-spinner icon-spin"></i>')})
     .ajaxComplete(function() {$('#progress').html('')});
 });

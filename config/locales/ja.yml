@@ -1,6 +1,3 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 ja:
   general:
     title: wanacie!
@@ -18,10 +15,10 @@ ja:
       next: ▶
 
   login:
-    title: ログイン 
-    remember_password: パスワードを記憶する
-    signup_msg: アカウントをお持ちでない方はこちら
-    submit: ログイン
+    index:
+      title: ログイン 
+      remember_password: パスワードを記憶する
+      signup_msg: アカウントをお持ちでない方はこちら
 
   events:
     is_not_joined: 参加したい！
@@ -31,29 +28,30 @@ ja:
     start: 開始
     index:
       title: 直近のイベント
-    new: # page
+    new: 
       title: 募集をかけよう！
-    form: # page
+    form: 
       purpose: 何する？(お茶したい、ご飯したい、など)
       place: どこで？
       held_datetime: 何時から？(24時間以内を指定)
       msg: メッセージあれば。
-    show: # page
+    show: 
       participant: 参加者
       unit: 人
       to_comment: この募集にコメントする
 
   users:
-    new: さあはじめよう！
-    history: 主催・参加イベント
-    no_history: まだ参加/主催イベントはありません。
+    new:
+      title: さあはじめよう！
+    show:
+      history: 主催・参加イベント
+      no_history: まだ参加/主催イベントはありません。
     edit:
-      title: ユーザ情報変更
+      title: アカウント情報変更
 
-  search: # page
+  search: 
     title: 参加するイベントをさがそう！
     
-
   footer:
     top: トップ
     about:
@@ -196,6 +194,7 @@ ja:
       update: 更新
       search: 検索
       comment: コメント
+      login: ログイン
   number:
     currency:
       format:

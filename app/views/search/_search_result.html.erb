@@ -22,7 +22,7 @@
           p_str = p_num > 0 ? '(' + p_num.to_s + ')' : '' %>
         <%= link_to (t 'events.is_not_joined') + p_str,
           { :controller => 'events', :id => e.id,  :action => 'join' },
-          confirm: (t 'events.joinning_confirmation'), :method => :post %> | 
+          confirm: (t 'events.join_confirmation'), :method => :post %> | 
       <% end %>
     <% end %>
     <% c_num = Comment.where(:event_id => e.id).count

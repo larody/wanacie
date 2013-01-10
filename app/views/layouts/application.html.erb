@@ -3,6 +3,7 @@
 <head>
   <title><%= t 'general.title' %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "jquery.timepicker", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -19,13 +20,13 @@
 <ul>
 <% if session[:user_id] %>
   <% user = User.find(session[:user_id]) %>
-  <li class='column_user'><%= link_to user.name, user_by_name_path(user.name) %></li>
-  <li class='column'><%= link_to (t 'general.signout'), signout_path %></li>
+  <li class='column_user'><i class="icon-user"></i><%= link_to user.name, user_by_name_path(user.name) %></li>
+  <li class='column'><i class="icon-signout"></i><%= link_to (t 'general.signout'), signout_path %></li>
 <% else %>
-  <li class='column'><%= link_to (t 'general.signin'), signin_path %></li>
-  <li class='column'><%= link_to (t 'general.signup'), signup_path %></li>
+  <li class='column'><i class="icon-signin"></i><%= link_to (t 'general.signin'), signin_path %></li>
+  <li class='column'><i class="icon-magic"></i><%= link_to (t 'general.signup'), signup_path %></li>
 <% end %>
-<li class='column'><%= link_to (t 'general.help'), root_path %></li>
+<li class='column'><i class="icon-info-sign"></i><%= link_to (t 'general.help'), root_path %></li>
 </ul>
 </div><!--End of menu_bar_right-->
 </div><!--End of menu_bar-->
@@ -38,9 +39,9 @@
 <div id='sidebar'>
 
 <% if session[:user_id] %>
-<ul><a class='button' href='<%= new_event_path %>'><span><%= t 'general.ask' %></span></a></ul>
-<ul><a class='button' href='<%= search_path %>'><span><%= t 'general.search' %></span></a></ul>
-<ul><%= link_to 'アカウント情報変更', account_path %></ul>
+<ul><a class='button' href='<%= new_event_path %>'><span><i class="icon-bullhorn"></i><%= t 'general.ask' %></span></a></ul>
+<ul><a class='button' href='<%= search_path %>'><span><i class="icon-search"></i><%= t 'general.search' %></span></a></ul>
+<ul><i class="icon-cogs"></i><%= link_to t('users.edit.title'), account_path %></ul>
 <% end %>
 </div><!--End of sidebar-->
 
@@ -49,7 +50,7 @@
 <div id='footer'>
 <a href="https://twitter.com/share" class="twitter-share-button" data-via="larody">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<p class='copyright'>© <%= Time.now.year %> wanacie! <%= link_to (t 'footer.about.here'), about_path('here') %> <%= link_to '@larody', 'https://twitter.com/larody', :target => '_blank' %></p>
+<p class='copyright'>© <%= Time.now.year %> <%= link_to t('general.title'), root_path %> <%= link_to (t 'footer.about.here'), about_path('here') %> <%= link_to '@larody', 'https://twitter.com/larody', :target => '_blank' %></p>
 </div><!--End of footer-->
 
 </body>

@@ -4,7 +4,7 @@
 <div class='userinfo'>
   <p class='username'><%= link_to @user.name, user_by_name_path(@user.name) %></p>
 
-  <p><%= t 'users.history' %></p>
+  <p><%= t '.history' %></p>
   <% if @participants.size > 0 %>
     <% @participants.each do |p| %>
       <% e = Event.find(p.event_id) %>
@@ -27,7 +27,7 @@
       :previous_label => (t 'general.paginate.pre'), :next_label => (t 'general.paginate.next') %></p>
 
   <% else %>
-    <p><%= t 'users.no_history' %></p>
+    <p><%= t '.no_history' %></p>
   <% end %>
 
 </div><!--End of userinfo-->

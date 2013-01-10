@@ -1,30 +1,32 @@
-<div id='main'>
-<h1><%= t 'login.title' %></h1>
-<p style="color: Red"><%= @error %></p>
-<%= form_tag :action => 'auth' do %>
-  <div class="field">
-    <p><%= t 'activerecord.attributes.user.name' %></p>
-    <%= text_field_tag(:username, '', {:size => 20}) %></label>
-  </div>
+<div id="main">
+  <h1><%= t '.title' %></h1>
 
-  <div class="field">
-    <p><%= t 'activerecord.attributes.user.password' %></p>
-    <%= password_field_tag(:password, '', {:size => 20}) %></label>
-  </div>
+  <div id="form">
+    <p style="color: Red"><%= @error %></p>
 
-  <div class="check_box">
-  <p><%= t 'login.remember_password' %><%= check_box_tag(:memory, '', checked = true) %></p>
-  </div>
+    <%= form_tag :action => 'auth' do %>
+      <div class="field">
+        <p><%= label_tag :username, t('activerecord.attributes.user.name') %></p>
+        <%= text_field_tag(:username, '', {:size => 20}) %>
+      </div>
+      <div class="field">
+        <p><%= label_tag :password, t('activerecord.attributes.user.password') %></p>
+        <%= password_field_tag(:password, '', {:size => 20}) %>
+      </div>
 
-  <!-- set action on hidden_field to redirect after logined  -->
-  <%= hidden_field_tag :referer, flash[:referer] %>
+      <div class="check_box">
+        <p><%= check_box_tag(:memory, '', checked = true) %><%= label_tag :memory, t('.remember_password') %></p>
+      </div>
 
-  <div class='button'>
-  <%= submit_tag (t 'login.submit') %>
-  </div>
+      <%# set action on hidden_field to redirect after logined %>
+      <%= hidden_field_tag :referer, flash[:referer] %>
 
-<% end %>
+      <div class='button'>
+      <%= submit_tag (t 'helpers.submit.login') %>
+      </div>
+    <% end %>
 
-<p><%= t 'login.signup_msg' %> <%= link_to (t 'general.signup'), signup_path %></p>
+    <p><%= t '.signup_msg' %> <%= link_to (t 'general.signup'), signup_path %></p>
+  </div><!--End of form-->
 
 </div><!--End of main-->

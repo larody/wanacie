@@ -12,6 +12,8 @@
  *= require_tree .
  */
 
+//*= require 'font-awesome'
+
 <!--
 /*---Common---------------------------------------*/
 $color: #333333;
@@ -301,9 +303,13 @@ div { word-wrap: break-word; }
   background-color: beige;
   margin-bottom: 15px; 
   padding: 25px 0px 25px 10px;
+  font-size: 1.1em;
+  input {
+    font-size: 1.1em;
+    height: 1.6em; }
 }
 
-#event_form {
+#form {
   margin-bottom: 15px; 
   padding: 25px 0px 25px 10px;
 
