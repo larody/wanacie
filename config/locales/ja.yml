@@ -27,7 +27,7 @@ ja:
     join_confirmation: 参加しますか？
     start: 開始
     index:
-      title: 直近のイベント
+      title: 新着イベント
     new: 
       title: 募集をかけよう！
     form: 
@@ -39,6 +39,8 @@ ja:
       participant: 参加者
       unit: 人
       to_comment: この募集にコメントする
+      signin_to_join: 参加したい！(ログインする)
+      signin_to_comment: コメントしたい！(ログインする)
 
   users:
     new:

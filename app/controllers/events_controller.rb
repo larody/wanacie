@@ -8,6 +8,10 @@ class EventsController < ApplicationController
   def index
     @events = Event.upcoming(50).paginate(:page => params[:page], :per_page => 10)
 
+    # Avoid remaining flash[:referer] cache like when a user paths "events/show -> root -> signin" route
+    # May should be put it on after_filter
+    flash[:referer] = nil
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
@@ -20,6 +24,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @comments = Comment.find_all_by_event_id(@event.id)
     @comment = Comment.new
+
+    flash.keep[:referer] = request.fullpath
 
     respond_to do |format|
       format.html # show.html.erb

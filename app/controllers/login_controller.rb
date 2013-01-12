@@ -18,7 +18,7 @@ class LoginController < ApplicationController
   
   def logout
     reset_session
-    redirect_to '/'
+    redirect_to root_path
   end
 
 end

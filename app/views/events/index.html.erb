@@ -1,15 +1,12 @@
-<% if session[:user_id] %>
-  <div id='main'>
-  <h1><%= t '.title' %></h1>
-
-  <%= render 'events_list' %>
-
-  </div><!--End of main-->
-
-<% else %>
-  <div id='banner'>
+<div id='banner'>
   <p><%= t 'general.description1' %></p>
   <p><%= t 'general.description2' %></p>
-  <ul><li><a class='button' href='<%= signup_path %>'><span><%= t 'general.start' %></span></a></li></ul>
-  </div><!--End of banner-->
-<% end %>
+  <% unless session[:user_id] %>
+    <ul><li><a class='button' href='<%= signup_path %>'><span><%= t 'general.start' %></span></a></li></ul>
+  <% end %>
+</div><!--End of banner-->
+  
+<div id='main'>
+  <h1><%= t '.title' %></h1>
+  <%= render 'events_list' %>
+</div><!--End of main-->

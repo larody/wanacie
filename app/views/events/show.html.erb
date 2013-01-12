@@ -27,6 +27,8 @@
             { :controller => 'events', :id => @event.id,  :action => 'join' },
             confirm: '参加しますか？', :method => :post %> | 
         <% end %>
+      <% else %>
+        <%= link_to t('.signin_to_join'), signin_path %>
       <% end %>
 
       <% if organizer.id == session['user_id'] %>
@@ -59,29 +61,33 @@
     </div>
   <% end %>
 
-  <%= form_for(@comment, :url => url_for(:action => 'comment')) do |f| %>
+  <% if session[:user_id] %>
+    <%= form_for(@comment, :url => url_for(:action => 'comment')) do |f| %>
    
-    <% if @comment.errors.any? %>
-      <div id="error_explanation">
-        <ul>
-        <% @comment.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
+      <% if @comment.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+          <% @comment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label (t '.to_comment') %><br />
+        <%= f.text_area :msg, :cols => 60, :rows => 3 %>
       </div>
-    <% end %>
+      <%= f.hidden_field :event_id, :value => @event.id %>
+      <%= f.hidden_field :user_id, :value => session['user_id'] %>
 
-    <div class="field">
-      <%= f.label (t '.to_comment') %><br />
-      <%= f.text_area :msg, :cols => 60, :rows => 3 %>
-    </div>
-    <%= f.hidden_field :event_id, :value => @event.id %>
-    <%= f.hidden_field :user_id, :value => session['user_id'] %>
-
-    <div class="actions">
-      <%= f.submit (t 'helpers.submit.comment') %>
-    </div>
-  <% end %><%# End of form %>
+      <div class="actions">
+        <%= f.submit (t 'helpers.submit.comment') %>
+      </div>
+    <% end %><%# End of form %>
+  <% else %>
+    <p><%= link_to t('.signin_to_comment'), signin_path %></p>
+  <% end %>
 
   </div><!--End of comment_form-->
 
