@@ -324,8 +324,18 @@ div { word-wrap: break-word; }
     font-size: 1.1em; }
 }
 
+#congrats {
+  margin: 0 0 10px 0;
+  padding: 3px 10px 3px 10px;
+//border: solid 1px mediumseagreen;
+  border-radius: 7px;
+  background-color: lightgreen;
+  p {
+    color: green; }
+}
+
 #error_explanation {
-  margin: 0 10px 10px 0;
+  margin: 0 0 10px 0;
   padding: 10px;
   border-radius: 7px;
   background-color: lightsalmon;

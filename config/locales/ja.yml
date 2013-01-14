@@ -64,6 +64,12 @@ ja:
       us: 運営者情報
       contact: お問い合わせ
 
+  msg:
+    user_created: ありがとうございます！ユーザを作成しました！
+    event_created: ありがとうございます！イベントを作成しました！
+    comment_created: ありがとうございます！コメントを投稿しました！
+    joined: ありがとうございます！このイベントに参加しました！
+
   date:
     abbr_day_names:
     - 日

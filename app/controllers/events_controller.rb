@@ -42,11 +42,12 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @event, notice: 'Comment was successfully created.' }
-        format.json { render json: @event, status: :created, location: @comment }
+        format.html { redirect_to @event }
+        flash[:comment_created] = t('msg.comment_created')
       else
         format.html { render 'show' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        flash[:joined] = nil
+        flash[:comment_created] = nil
       end 
     end 
   end
@@ -138,7 +139,8 @@ class EventsController < ApplicationController
 
     # Success
     respond_to do |format|
-      format.html { redirect_to event_path(@participant.event_id), notice: 'このイベントに参加しました！' }
+      format.html { redirect_to event_path(@participant.event_id) }
+      flash[:joined] = t('msg.joined')
     end
 
     # Fail

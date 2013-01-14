@@ -1,20 +1,21 @@
 <div id='main'>
-<p id="notice"><%= notice %></p>
-
-<div id="userinfo">
-  <p id="username"><%= link_to @user.name, user_by_name_path(@user.name) %></p>
-
-  <p><%= t '.history' %></p>
-  <% if @participants.size > 0 %>
-    <% @participants.each do |p| %>
-      <%= render 'events/event', :event => Event.find(p.event_id), :type => :simple %>
-    <% end %>
-    <p class='footer'><%= will_paginate @participants,
-      :previous_label => (t 'general.paginate.pre'), :next_label => (t 'general.paginate.next') %></p>
-
-  <% else %>
-    <p><%= t '.no_history' %></p>
+  <% if flash[:user_created] %>
+    <div id="congrats">
+      <p><%= flash[:user_created] %></p>
+    </div>
   <% end %>
 
-</div><!--End of userinfo-->
+  <div id="userinfo">
+    <p id="username"><%= link_to @user.name, user_by_name_path(@user.name) %></p>
+    <p><%= t '.history' %></p>
+    <% if @participants.size > 0 %>
+      <% @participants.each do |p| %>
+        <%= render 'events/event', :event => Event.find(p.event_id), :type => :simple %>
+      <% end %>
+      <p class='footer'><%= will_paginate @participants,
+        :previous_label => (t 'general.paginate.pre'), :next_label => (t 'general.paginate.next') %></p>
+    <% else %>
+      <p><%= t '.no_history' %></p>
+    <% end %>
+  </div><!--End of userinfo-->
 </div><!--End of main-->

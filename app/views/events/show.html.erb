@@ -1,5 +1,13 @@
 <div id='main'>
-  <p id="notice"><%= notice %></p>
+  <% if flash[:comment_created] %>
+    <div id="congrats">
+      <p><%= flash[:comment_created] %></p>
+    </div>
+  <% elsif flash[:joined] %>
+    <div id="congrats">
+      <p><%= flash[:joined] %></p>
+    </div>
+  <% end %>
 
   <%# Display Event %>
   <%= render @event, :type => :detail %>

@@ -50,11 +50,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
-        format.html { redirect_to user_by_name_path(@user.name), notice: 'User was successfully created.' }
-        format.json { render json: user_by_name_path, status: :created, location: @user }
+        format.html { redirect_to user_by_name_path(@user.name) }
+        flash[:user_created] = t('msg.user_created')
       else
         format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
