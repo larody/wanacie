@@ -1,0 +1,45 @@
+<div class='event'>
+  <% date = event.held_datetime.to_date == Time.now.to_date ? event.held_datetime.strftime("%H時%M分") :
+    event.held_datetime.strftime("%d日(#{%w(日 月 火 水 木 金 土)[event.held_datetime.wday]}) %H時%M分") %>
+  <% title = '<i class="icon-time"></i>'.html_safe + date + (t '.start') + ' ' + event.purpose + ' @ ' + event.place %>
+  <p class='title'><%= link_to title, event %></p>
+  <p class='message'><%= event.msg %></p>
+  <p class='crud'>
+    <%# Get information about the organizer from users %>
+    <% p = Participant.where(:event_id => event.id, :organizer => true).select('user_id, created_at').first %>
+    <% organizer = User.find(p.user_id) %>
+    <span class='user'>by <%= link_to organizer.name, user_by_name_path(organizer.name) %></span>
+    <span class='posted'><%= time_ago_in_words(p.created_at) %></span>
+
+    <% if session[:user_id] %>
+      <%# Event belongs to user %>
+      <% if organizer.id == session[:user_id] %>
+        <span><%= link_to (t '.enclose'), edit_event_path(event) %></span>
+      <%# Event belongs to another user %>
+      <% else %>
+        <%# User is joining this event %>
+        <% if Participant.exists?({:event_id => event.id, :user_id => session[:user_id]}) %>
+          <% p_num = Participant.where(:event_id => event.id, :organizer => false).count
+            p_str = p_num > 0 ? '(' + p_num.to_s + ')' : '' %>
+          <%= link_to '<i class="icon-plus"></i>'.html_safe + (t '.is_joined') + p_str, event %>
+        <%# User isn't joining this event %>
+        <% else %>
+          <% p_num = Participant.where(:event_id => event.id, :organizer => false).count
+            p_str = p_num > 0 ? '(' + p_num.to_s + ')' : '' %>
+          <%= link_to '<i class="icon-plus"></i>'.html_safe + (t '.is_not_joined') + p_str,
+            { :controller => 'events', :id => event.id,  :action => 'join' },
+            confirm: (t '.join_confirmation'), :method => :post %>
+        <% end %>
+      <% end %>
+    <%# The user hasn't signin yet. %>
+    <% else %>
+        <%= link_to t('.signin_to_join'), signin_path if type == :detail %>
+    <% end %>
+    <%# Display space %>
+    <%= p ' | ' if type == :simple and session[:user_id] %>
+    <%# Display comments %>
+    <% c_num = Comment.where(:event_id => event.id).count
+       c_str = c_num > 0 ? '(' + c_num.to_s + ')' : '' %>
+    <%= link_to '<i class="icon-comments-alt"></i>'.html_safe + (t '.detail') + c_str, event if type == :simple %>  
+  </p>
+</div><!--End of event-->

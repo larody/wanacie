@@ -2,7 +2,13 @@
   <h1><%= t '.title' %></h1>
 
   <div id="form">
-    <p style="color: Red"><%= @error %></p>
+    <% if @error %>
+      <div id="error_explanation">
+        <ul>
+          <li><%= @error %></li>
+        </ul>
+      </div>
+    <% end %>
 
     <%= form_tag :action => 'auth' do %>
       <div class="field">

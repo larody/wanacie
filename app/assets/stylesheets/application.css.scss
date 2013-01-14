@@ -252,14 +252,13 @@ div { word-wrap: break-word; }
     border: solid 1px darkorange;
     border-radius: 7px;
     background: peachpuff; }
-  .userinfo {
-    a {
-      color: $color;
-      &:visited { color: $color; } }
-    p.username {
-      font-size: $font_size * 1.5;
+  #userinfo {
+    #username {
+      font-size: $font_size * 1.75;
       font-weight: bold;
       a {
+        color: $color;
+        &:visited { color: $color; }
         &:hover { text-decoration: none; } } } }
   .article {
     margin: 0 0 15px 0;
@@ -323,6 +322,21 @@ div { word-wrap: break-word; }
     height: 1.8em; }
   textarea {
     font-size: 1.1em; }
+}
+
+#error_explanation {
+  margin: 0 10px 10px 0;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: lightsalmon;
+  ul {
+    margin: 0;
+    padding: 0 0 0 20px;
+    }
+  li {
+    margin: 0;
+    padding: 0;
+    color: red; }
 }
 
 /*---sidebar---------------------------------------*/

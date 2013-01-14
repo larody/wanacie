@@ -21,11 +21,14 @@ ja:
       signup_msg: アカウントをお持ちでない方はこちら
 
   events:
-    is_not_joined: 参加したい！
-    is_joined: 参加中！
-    detail: 内容を見る
-    join_confirmation: 参加しますか？
-    start: 開始
+    event:
+      join_confirmation: 参加しますか？
+      is_not_joined: 参加したい！
+      is_joined: 参加中！
+      detail: 内容を見る
+      enclose: しめきる
+      start: 開始
+      signin_to_join: 参加したい！(ログインする)
     index:
       title: 新着イベント
     new: 
@@ -39,7 +42,6 @@ ja:
       participant: 参加者
       unit: 人
       to_comment: この募集にコメントする
-      signin_to_join: 参加したい！(ログインする)
       signin_to_comment: コメントしたい！(ログインする)
 
   users:

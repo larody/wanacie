@@ -1,44 +1,10 @@
 <div id='main'>
   <p id="notice"><%= notice %></p>
 
-  <div class='event'>
-    <% date = @event.held_datetime.to_date == Time.now.to_date ? @event.held_datetime.strftime("%H時%M分") :
-      @event.held_datetime.strftime("%d日(#{%w(日 月 火 水 木 金 土)[@event.held_datetime.wday]}) %H時%M分") %>
-    <% title = date + '開始 ' + @event.purpose + ' @ ' + @event.place %>
+  <%# Display Event %>
+  <%= render @event, :type => :detail %>
 
-    <p class='title'><%= link_to title, @event %></p>
-    <p class='message'><%= @event.msg %></p>
-    <p class='crud'>
-      <%# Get information about the organizer from users %>
-      <% p = Participant.where(:event_id => @event.id, :organizer => true).select('user_id, created_at').first %>
-      <% organizer = User.find(p.user_id) %>
-      <span class='user'>by <%= link_to organizer.name, user_by_name_path(organizer.name) %></span>
-      <span class='posted'><%= time_ago_in_words(p.created_at) %></span>
-
-      <% if session[:user_id] and (organizer.id != session[:user_id]) %>
-        <% if Participant.exists?({:event_id => @event.id, :user_id => session[:user_id]}) %>
-          <% p_num = Participant.where(:event_id => @event.id, :organizer => false).count
-            p_str = p_num > 0 ? '(' + p_num.to_s + ')' : '' %>
-          <%= link_to '参加中！' + p_str, @event %> | 
-        <% else %>
-          <% p_num = Participant.where(:event_id => @event.id, :organizer => false).count
-            p_str = p_num > 0 ? '(' + p_num.to_s + ')' : '' %>
-          <%= link_to '参加したい！' + p_str,
-            { :controller => 'events', :id => @event.id,  :action => 'join' },
-            confirm: '参加しますか？', :method => :post %> | 
-        <% end %>
-      <% else %>
-        <%= link_to t('.signin_to_join'), signin_path %>
-      <% end %>
-
-      <% if organizer.id == session['user_id'] %>
-        <span>|</span>
-        <span><%= link_to 'しめきる', edit_event_path(@event) %></span>
-      <% end %>
-    </p>
-  </div><!--End of event-->
-
-  <%# Display participants %>
+  <%# Display Participants %>
   <div id='participants'>
     <% participants = Participant.where(:event_id => @event.id, :organizer => false).select('user_id') %>
     <p><span><%= t '.participant' %>(<%= participants.size %><%= t '.unit' %>): </span>
@@ -49,8 +15,9 @@
     </p>
   </div>
 
-  <%# Display already posted comments %>
+  <%# Display Comments %>
   <% @comments.each do |c| %>
+    <%# Change Event Background Color %>
     <div class="<%= div = c.msg == '参加します！' ? 'join_comment' : 'comment' %>">
       <%= simple_format(c.msg, {:class => 'message'}) %>
       <p class='crud'>
@@ -62,6 +29,7 @@
   <% end %>
 
   <% if session[:user_id] %>
+    <%# Diplay Comment Form %>
     <%= form_for(@comment, :url => url_for(:action => 'comment')) do |f| %>
    
       <% if @comment.errors.any? %>
