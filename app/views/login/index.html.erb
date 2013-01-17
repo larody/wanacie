@@ -1,14 +1,15 @@
 <div id="main">
   <h1><%= t '.title' %></h1>
 
+  <% if @error %>
+    <div id="error_explanation">
+      <ul>
+        <li><%= @error %></li>
+      </ul>
+    </div>
+  <% end %>
+
   <div id="form">
-    <% if @error %>
-      <div id="error_explanation">
-        <ul>
-          <li><%= @error %></li>
-        </ul>
-      </div>
-    <% end %>
 
     <%= form_tag :action => 'auth' do %>
       <div class="field">

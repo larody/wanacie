@@ -48,6 +48,7 @@ class EventsController < ApplicationController
         format.html { render 'show' }
         flash[:joined] = nil
         flash[:comment_created] = nil
+        flash[:event_created] = nil
       end 
     end 
   end
@@ -81,7 +82,8 @@ class EventsController < ApplicationController
     end
     # Success
     respond_to do |format|
-      format.html { redirect_to @event, notice: 'Event was successfully created.' }
+      format.html { redirect_to @event }
+      flash[:event_created] = t('msg.event_created')
       format.json { render json: @event, status: :created, location: @event }
     end
     # Fail

@@ -1,7 +1,7 @@
 #coding: utf-8
 
 class UsersController < ApplicationController
-  before_filter :check_logined, :except => ['new', 'create']
+  before_filter :check_logined, :except => ['show', 'new', 'create']
 
   # GET /users
   # GET /users.json

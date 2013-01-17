@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
     :length => { :maximum => 128 }
 
   scope :upcoming, lambda { |num|
-    where('held_datetime >= ?', Time.now + 60.minutes ).order('held_datetime ASC').limit(num)
+    where('held_datetime >= ?', Time.now - 360.minutes ).order('held_datetime ASC').limit(num)
   }
 
   scope :newly_arrived, lambda { |num|

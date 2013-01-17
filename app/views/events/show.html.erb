@@ -7,6 +7,10 @@
     <div id="congrats">
       <p><%= flash[:joined] %></p>
     </div>
+  <% elsif flash[:event_created] %>
+    <div id="congrats">
+      <p><%= flash[:event_created] %></p>
+    </div>
   <% end %>
 
   <%# Display Event %>

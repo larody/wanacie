@@ -1,17 +1,16 @@
+<% if @event.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div id='form'>
 
   <%= form_for(@event) do |f| %>
-
-    <% if @event.errors.any? %>
-      <div id="error_explanation">
-        <ul>
-        <% @event.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
     <div class="field">
       <%= f.label :purpose, t('.purpose') %><br />
       <%= f.text_field :purpose, :size => 30, :maxlength => 30 %>

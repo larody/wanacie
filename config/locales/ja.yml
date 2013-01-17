@@ -30,7 +30,7 @@ ja:
       start: 開始
       signin_to_join: 参加したい！(ログインする)
     index:
-      title: 新着イベント
+      title: 直近のイベント
     new: 
       title: 募集をかけよう！
     form: 
@@ -65,10 +65,10 @@ ja:
       contact: お問い合わせ
 
   msg:
-    user_created: ありがとうございます！ユーザを作成しました！
-    event_created: ありがとうございます！イベントを作成しました！
-    comment_created: ありがとうございます！コメントを投稿しました！
-    joined: ありがとうございます！このイベントに参加しました！
+    user_created: ユーザを作成しました！ありがとうございます！
+    event_created: イベントを作成しました！ありがとうございます！
+    comment_created: コメントを投稿しました！ありがとうございます！
+    joined: このイベントに参加しました！ありがとうございます！
 
   date:
     abbr_day_names:
