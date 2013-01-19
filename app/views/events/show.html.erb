@@ -13,10 +13,8 @@
     </div>
   <% end %>
 
-  <%# Display Event %>
   <%= render @event, :type => :detail %>
 
-  <%# Display Participants %>
   <div id='participants'>
     <% participants = Participant.where(:event_id => @event.id, :organizer => false).select('user_id') %>
     <p><span><%= t '.participant' %>(<%= participants.size %><%= t '.unit' %>): </span>
@@ -27,7 +25,6 @@
     </p>
   </div>
 
-  <%# Display Comments %>
   <% @comments.each do |c| %>
     <%# Change Event Background Color %>
     <div class="<%= div = c.msg == '参加します！' ? 'join_comment' : 'comment' %>">
@@ -41,7 +38,6 @@
   <% end %>
 
   <% if session[:user_id] %>
-    <%# Diplay Comment Form %>
     <%= form_for(@comment, :url => url_for(:action => 'comment')) do |f| %>
    
       <% if @comment.errors.any? %>

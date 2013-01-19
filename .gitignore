@@ -8,9 +8,9 @@
 db/*.sqlite3
 log/*.log
 tmp
-db/schema.rb
-assets/images/*
-config/environments
-config/database.yml
-config/application.rb
+#db/schema.rb
+#assets/images/*
+#config/environments
+#config/database.yml
+#config/application.rb
 push2git.rb
