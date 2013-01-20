@@ -186,39 +186,13 @@ div { word-wrap: break-word; }
     margin: 20px 0 0 40px;
     padding: 0;
     li {
+    width: 200px; /* is used 'get started' button */
     margin: 0;
     padding: 0;
     float: left;
-    list-style: none; } }
-  .button span {
-    margin: 0;
-    display: inline-block;
-    border-style: none;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    font-size: $font_size * 1.4;
-    font-weight: bold;
-    padding: 7px 50px;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    background-image:
-      -moz-linear-gradient(
-        center top,
-        #9cbb1c 25%,
-        #65ab31 75% );
-    border: 1px solid #d1de4c;
-    text-shadow:
-      1px 1px 1px rgba(255,255,255,.3),
-      -1px -1px 1px rgba(0,0,0,.3);
-    text-decoration: none;
-      &:hover {
-        background-image:
-          -moz-linear-gradient(
-            center top,
-            #504946 25%,
-            $bar_color 75% ); } } }
+    list-style: none;
+      a { color: white; /* is used buttons */
+        &:visited { color: white; } } } } }
 
 /*---main---------------------------------------*/
 #main {
@@ -309,11 +283,9 @@ div { word-wrap: break-word; }
 #form {
   margin-bottom: 15px; 
   padding: 25px 0px 25px 10px;
-
   border: solid 5px palegoldenrod;
   border-radius: 10px;
   background-color: beige;
-
   font-size: 1.1em;
   input {
     font-size: 1.2em;
@@ -359,38 +331,9 @@ div { word-wrap: break-word; }
   margin: 10px 0 10px 0;
   padding: 0;
   text-align: center;
-}
-
-#sidebar login {
-  padding: 5px;
-}
-
-#sidebar .button span {
-  margin: 0;
-  display: inline-block;
-  border-style: none;
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
-  font-family: Optima;
-  font-size: $font_size * 1.3;
-  font-weight: bold;
-  padding: 10px 65px;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  background-image:
-    -moz-linear-gradient(
-       center top,
-       #a7d28d 25%,
-       #37a34a 75%
-    );
-  border: 1px solid #669;
-  text-shadow:
-    1px 1px 1px rgba(255,255,255,.3),
-    -1px -1px 1px rgba(0,0,0,.3);
-  text-decoration: none;
-}
+  a {
+    color: white; /* is used buttons */
+    &:visited { color: white; } } }
 
 /*---footer---------------------------------------*/
 #footer {

@@ -2,7 +2,7 @@
   <p><%= t 'general.description1' %></p>
   <p><%= t 'general.description2' %></p>
   <% unless session[:user_id] %>
-    <ul><li><a class='button' href='<%= signup_path %>'><span><%= t 'general.start' %></span></a></li></ul>
+    <ul><li><a class='btn btn-large btn-block btn-success' href='<%= signup_path %>'><%= t 'general.start' %></a></li></ul>
   <% end %>
 </div><!--End of banner-->
   
