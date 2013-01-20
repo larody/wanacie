@@ -2,4 +2,4 @@
 
 puts`git status -s`
 puts`git commit -am '#{Time.now}'` 
-puts`git push venus master`
+puts`git push origin master`
