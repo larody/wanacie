@@ -14,36 +14,41 @@
     <div class="control-group">
       <%= f.label :purpose, t('.purpose'), :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :purpose, :size => 30, :maxlength => 30, :placeholder => t('.purpose-eg') %>
+        <%= f.text_field :purpose, :class => 'input-xlarge', :maxlength => 30, :placeholder => t('.purpose-eg') %>
       </div>
     </div>
-<!--
-    <div class="field">
-      <%#= f.label :held_datetime, t('.held_datetime') %><br />
-      <%#= f.text_field :held_datetime, :id => 'timepicker', :size => 8 %>
-    </div>
--->
+
     <div class="control-group">
       <%= f.label :held_datetime, t('.held_datetime'), :class => 'control-label' %>
       <div class="controls">
-        <%= f.time_select :held_datetime, :default => Time.now + 30.minutes, :minute_step => 10, :html_opts => { :class => 'span1'} %>
+        <%= f.text_field :held_datetime, :id => 'timepicker', :class => 'input-small', :value => Time.now.strftime("%H:%M") %>
+      </div>
+    </div>
+
+<!--
+    <div class="control-group">
+      <%# f.label :held_datetime, t('.held_datetime'), :class => 'control-label' %>
+      <div class="controls">
+        <%# f.time_select :held_datetime, :default => Time.now + 30.minutes, :minute_step => 10, :html_opts => {:class => 'input-small'} %>
       </div>    
     </div>    
+-->
+
     <div class="control-group">
       <%= f.label :place, t('.place'), :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :place, :size => 30, :maxlength => 30, :placeholder => t('.place-eg') %>
+        <%= f.text_field :place, :class => 'input-xlarge', :maxlength => 30, :placeholder => t('.place-eg') %>
       </div>
     </div>
     <div class="control-group">
       <%= f.label :msg, t('.msg'), :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_area :msg, :cols => 90, :rows => 4, :placeholder => t('.msg-eg') %>
+        <%= f.text_area :msg, :class => 'input-xlarge', :cols => 40, :rows => 4, :placeholder => t('.msg-eg') %>
       </div>
     </div>
     <div class="control-group">
       <div class="controls">
-        <%= f.submit :class => 'btn btn-primary' %>
+        <%= f.submit :class => 'btn btn-large btn-success' %>
       </div>
     </div>
   <% end %>

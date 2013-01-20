@@ -41,14 +41,13 @@ $(function() {
     $("label[for='" + this.id + "']").removeClass("labelfocus");
   });
 
-  /* jQuery.timepicker
-   *$("#timepicker").timepicker({
+  // jQuery.timepicker
+  $("#timepicker").timepicker({
     'setTime': new Date(),
     'forceRoundTime': true,
     'scrollDefaultNow': true,
     'step': 10
   });
-  */
 
   $('*')
     .ajaxStart   (function() {$('#progress').html('<i class="icon-spinner icon-spin"></i>')})

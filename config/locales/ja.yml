@@ -34,9 +34,9 @@ ja:
     new: 
       title: 募集をかけよう！
     form: 
-      purpose: 何する？(お茶したい、ご飯したい、など)
-      place: どこで？
-      held_datetime: 何時から？(24時間以内を指定)
+      purpose: 何する？*
+      place: どこで？*
+      held_datetime: 何時から？*
       msg: メッセージあれば。
       purpose-eg: お茶したい
       place-eg: 新宿
@@ -68,10 +68,10 @@ ja:
       contact: お問い合わせ
 
   msg:
-    user_created: ユーザを作成しました！ありがとうございます！
-    event_created: イベントを作成しました！ありがとうございます！
-    comment_created: コメントを投稿しました！ありがとうございます！
-    joined: このイベントに参加しました！ありがとうございます！
+    user_created: ご登録ありがとうございます。ユーザが作成されました！
+    event_created: イベントを作成しました！
+    comment_created: コメントを投稿しました！
+    joined: このイベントに参加しました！
 
   date:
     abbr_day_names:
