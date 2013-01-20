@@ -38,8 +38,8 @@
       <%= yield %>
 
       <div id='sidebar'>
-        <ul><a class='button' href='<%= new_event_path %>'><span><i class="icon-bullhorn"></i><%= t 'general.ask' %></span></a></ul>
-        <ul><a class='button' href='<%= search_path %>'><span><i class="icon-search"></i><%= t 'general.search' %></span></a></ul>
+        <ul><a class='btn btn-large btn-block btn-primary' href='<%= new_event_path %>'><span><i class="icon-bullhorn"></i><%= t 'general.ask' %></span></a></ul>
+        <ul><a class='btn btn-large btn-block btn-primary' href='<%= search_path %>'><span><i class="icon-search"></i><%= t 'general.search' %></span></a></ul>
         <ul><i class="icon-cogs"></i><%= link_to t('users.edit.title'), account_path %></ul>
       </div><!--End of sidebar-->
 
@@ -48,7 +48,7 @@
     <div id='footer'>
       <a href="https://twitter.com/share" class="twitter-share-button" data-via="larody">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-      <p class='copyright'>© <%= Time.now.year %> <%= link_to t('general.title'), root_path %> <%= link_to (t 'footer.about.here'), about_path('here') %> <%= link_to '@larody', 'https://twitter.com/larody', :target => '_blank' %></p>
+      <p class='copyright'>© <%= Time.now.year %> <%= link_to t('general.title'), root_path %> - <%= link_to (t 'footer.about.here'), about_path('here') %> - Hosted by <%= link_to '@larody', 'https://twitter.com/larody', :target => '_blank' %></p>
     </div><!--End of footer-->
 
   </body>

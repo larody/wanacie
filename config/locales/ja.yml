@@ -38,6 +38,9 @@ ja:
       place: どこで？
       held_datetime: 何時から？(24時間以内を指定)
       msg: メッセージあれば。
+      purpose-eg: お茶したい
+      place-eg: 新宿
+      msg-eg: カフェでまったりしましょ♪
     show: 
       participant: 参加者
       unit: 人

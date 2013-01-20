@@ -1,20 +1,22 @@
 <div id='main'>
   <h1><%= t 'search.title' %></h1>
-
-  <%= form_tag(search_result_path, :method => 'get', :id => 'events_search', :remote => true) do %>
+  <%= form_tag(search_result_path, :method => 'get', :id => 'events_search', :class => 'form-inline', :remote => true) do %>
     <div class="field">
-      <%= label_tag :place, t('activerecord.attributes.event.place') %>
-      <%= text_field_tag(:place, '', {:size => 16}) %>
-      <%= label_tag :purpose, t('activerecord.attributes.event.purpose') %>
-      <%= text_field_tag(:purpose, '', {:size => 16}) %>
-      <%= submit_tag t('helpers.submit.search') %>
-
-    <%# Area to display Progress %>
-    <span id="progress"></span>
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-map-marker"></i></span>
+        <%= text_field_tag(:place, '', {:size => 16, :placeholder => t('activerecord.attributes.event.place')}) %>
+      </div>
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-bookmark-empty"></i></span>
+        <%= text_field_tag(:purpose, '', {:size => 16, :placeholder => t('activerecord.attributes.event.purpose')}) %>
+      </div>
+      <button class="btn btn-primary" name="commit" type="submit"><i class="icon-search"></i></button>
+      <%# Area to Display Progress(Roling Circle Image) %>
+      <span id="progress"></span>
     </div>
   <% end %>
 
   <%# Area to display results %>
   <div id="result"><%= render 'search_result' %></div>
 
-</div><!--End of main-->
+</div><!--/main-->
