@@ -41,15 +41,19 @@ $(function() {
     $("label[for='" + this.id + "']").removeClass("labelfocus");
   });
 
-  // jQuery.timepicker
-  $("#timepicker").timepicker({
-    'setTime': new Date(),
-    'forceRoundTime': true,
-    'scrollDefaultNow': true,
-    'step': 10
-  });
-
   $('*')
     .ajaxStart   (function() {$('#progress').html('<i class="icon-spinner icon-spin"></i>')})
     .ajaxComplete(function() {$('#progress').html('')});
+
+  // Timepicker for Twitter Bootstrap
+  $('#event_held_datetime').clockface({
+    format: 'HH:mm',
+    trigger: 'manual'
+  });
+ 
+  // Timepicker for Twitter Bootstrap
+  $('#toggle-btn').click(function(e){   
+    e.stopPropagation();
+    $('#event_held_datetime').clockface('toggle');
+  });
 });

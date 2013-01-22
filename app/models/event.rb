@@ -23,4 +23,5 @@ class Event < ActiveRecord::Base
   scope :newly_arrived, lambda { |num|
     order('created_at DESC').limit(num)
   }
+
 end
