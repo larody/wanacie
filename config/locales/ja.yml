@@ -38,9 +38,9 @@ ja:
       place: どこで？*
       held_datetime: 何時から？*
       msg: メッセージあれば。
-      purpose-eg: お茶したい
-      place-eg: 新宿
-      msg-eg: カフェでまったりしましょ♪
+      purpose-eg: e.g. お茶したい！
+      place-eg: e.g. 新宿3丁目周辺のカフェ
+      msg-eg: e.g. コーヒーでも飲みながらまったり雑談しましょー♪
     show: 
       participant: 参加者
       unit: 人

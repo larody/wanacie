@@ -19,18 +19,33 @@
     </div>
 
     <% now = Time.now
-       fixed_datetime = Time.local(now.year, now.month, now.day, now.hour, (now.min/10.0).ceil * 10, 59).strftime("%H:%M") %>
+       year = now.year
+       day = now.day
+       hour = now.hour
+       min = (now.min/10.0).ceil * 10
+       sec = 59
+
+       if min > 59
+         min = 0
+         hour += 1
+         if hour > 24
+           hour = 0
+           day += 1
+           if month > 12
+             month = 0
+             year += 1
+           end
+         end
+       end
+
+       fixed_datetime = Time.local(year, month, day, hour, min, sec) %>
 
     <div class="control-group">
       <%= f.label :held_datetime, t('.held_datetime'), :class => 'control-label' %>
       <div class="controls">
-        <div class="input-append">
-          <input type="text" name="event[held_datetime]" id="event_held_datetime"
-                 value=<%= fixed_datetime %> class="input-small" readonly="">
-          <button class="btn" type="button" id="toggle-btn"><i class="icon-time"></i></button>
-        </div>
-      </div>
-    </div>
+        <%= f.time_select :held_datetime, :default => fixed_datetime, :minute_step => 10 %>
+      </div>    
+    </div>    
 
     <div class="control-group">
       <%= f.label :place, t('.place'), :class => 'control-label' %>

@@ -46,6 +46,7 @@ $(function() {
     .ajaxComplete(function() {$('#progress').html('')});
 
   // Timepicker for Twitter Bootstrap
+/*
   $('#event_held_datetime').clockface({
     format: 'HH:mm',
     trigger: 'manual'
@@ -56,4 +57,14 @@ $(function() {
     e.stopPropagation();
     $('#event_held_datetime').clockface('toggle');
   });
+*/
+
+  // jQuery.timepicker
+  $("#timepicker").timepicker({
+    'setTime': new Date(),
+    'forceRoundTime': true,
+    'scrollDefaultNow': true,
+    'step': 10
+  });
+
 });
