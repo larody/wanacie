@@ -22,7 +22,7 @@ ja:
 
   events:
     event:
-      join_confirmation: 参加しますか？
+      join_confirmation: このイベントに参加しますか？
       is_not_joined: 参加したい！
       is_joined: 参加中！
       detail: 内容を見る

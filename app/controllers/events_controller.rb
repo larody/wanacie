@@ -64,10 +64,12 @@ class EventsController < ApplicationController
     end
   end
 
+=begin
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
   end
+=end
 
   # POST /events
   # POST /events.json
@@ -94,6 +96,7 @@ class EventsController < ApplicationController
     end
   end
 
+=begin
   # PUT /events/1
   # PUT /events/1.json
   def update
@@ -121,7 +124,7 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+=end
 
   # POST /events/1/join
   def join

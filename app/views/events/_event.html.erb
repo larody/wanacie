@@ -22,17 +22,34 @@
         <% else %>
           <% p_num = Participant.where(:event_id => event.id, :organizer => false).count
             p_str = p_num > 0 ? '(' + p_num.to_s + ')' : '' %>
-          <%= link_to '<i class="icon-plus"></i>'.html_safe + (t '.is_not_joined') + p_str,
-            { :controller => 'events', :id => event.id,  :action => 'join' },
-            confirm: (t '.join_confirmation'), :method => :post %>
+
+          <a class="btn btn-success btn-small" data-toggle="modal" href="#join" ><%= t('.is_not_joined') + p_str %></a>
+          <div class="modal hide fade" id="join">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal">&times;</button>
+              <h3><%= t('.join_confirmation') %></h3>
+            </div>
+            <div class="modal-body">
+              <p class='title'><%= link_to title, event %></p>
+              <p class='message'><%= event.msg %></p>
+              <p class='crud'>
+                <span class='user'>by <%= link_to organizer.name, user_by_name_path(organizer.name) %></span>
+                <span class='posted'><%= time_ago_in_words(p.created_at) %></span>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn btn-large" data-dismiss="modal">Cancel</a>
+              <%= link_to 'Join', {:controller => 'events', :id => event.id, :action => 'join'},
+                  :method => :post, :class => 'btn btn-success btn-large' %>
+            </div>
+          </div>
         <% end %>
       <% end %>
     <% else %>
         <%= link_to t('.signin_to_join'), signin_path if type == :detail %>
     <% end %>
-    <%= p ' | ' if type == :simple and session[:user_id] %>
     <% c_num = Comment.where(:event_id => event.id).count
        c_str = c_num > 0 ? '(' + c_num.to_s + ')' : '' %>
-    <%= link_to '<i class="icon-comments-alt"></i>'.html_safe + (t '.detail') + c_str, event if type == :simple %>  
+    <%= link_to t('.detail') + c_str, event, :class => 'btn btn-small' if type == :simple %>  
   </p>
 </div><!--End of event-->

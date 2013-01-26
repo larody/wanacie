@@ -33,6 +33,7 @@ $(function() {
   });
 */
 
+/*
   $("form :input").focus(function() {
     $("label[for='" + this.id + "']").addClass("labelfocus");
   });
@@ -40,6 +41,7 @@ $(function() {
   $("form :input").blur(function() {
     $("label[for='" + this.id + "']").removeClass("labelfocus");
   });
+*/
 
   $('*')
     .ajaxStart   (function() {$('#progress').html('<i class="icon-spinner icon-spin"></i>')})
@@ -59,6 +61,7 @@ $(function() {
   });
 */
 
+/*
   // jQuery.timepicker
   $("#timepicker").timepicker({
     'setTime': new Date(),
@@ -66,5 +69,6 @@ $(function() {
     'scrollDefaultNow': true,
     'step': 10
   });
+*/
 
 });
