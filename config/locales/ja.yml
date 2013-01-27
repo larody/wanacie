@@ -1,12 +1,14 @@
 ja:
   general:
     title: wanacie!
+    copy: Experience priceless moments.
     description1: wanacie! は、「今から誰かと何かしたい！」を支援します。
     description2: さあ、あなたも誰かとプライスレスな一期一会を築いてみよう!
     start: はじめる！
     signin: ログイン
     signout: ログアウト
     signup: ユーザ登録
+    userinfo: ユーザ情報
     help: ヘルプ
     ask: 募集をかける!
     search: 募集をさがす!

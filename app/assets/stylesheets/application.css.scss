@@ -94,8 +94,8 @@ div { word-wrap: break-word; }
   width: $width - 305; /*MAX395px*/
   position: absolute;
   top: 0;
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
+  margin: 0;
+  padding: 0;
   color: $bar_font_color;
   line-height: $bar_height;
   a {
@@ -105,19 +105,27 @@ div { word-wrap: break-word; }
       color: $bar_font_color; }
     &:hover {
       color: white; } }
+  ul {
+    &.linelist {
+      height: $bar_height / 2;
+      list-style: none;
+      font-weight: normal;
+      margin: $bar_height/4 0 0 0;
+      padding: 0;
+      text-align: left; } } 
   li {
-    float: left;
-    height: $bar_height;
-    padding: 0 0 0 10px;
-    list-style: none;
-    &.title {
-      text-align: left;
-      font-size: $font_size * 1.5;
-      color: $bar_font_color; }
-    &.copy {
-      padding: 0 0 0 15px;
-      text-align: left;
-      color: $bar_font_color; } } }
+    &.linelist {
+      float: left;
+      height: $bar_height;
+      padding: 0 0 0 10px;
+      list-style: none;
+      &.title {
+        font-size: $font_size * 1.5;
+        color: $bar_font_color; }
+      &.copy {
+        padding: 0 0 0 15px;
+        color: $bar_font_color; } } }
+}
 
 /*---MenuBar(Right)---------------------------------------*/
 #menu_bar_right {
@@ -125,7 +133,6 @@ div { word-wrap: break-word; }
   float: right;
   margin: 0;
   padding: 0;
-  text-align: right;
   color: $bar_font_color;
   a {
     color: $bar_font_color;
@@ -136,27 +143,27 @@ div { word-wrap: break-word; }
       color: white;
       text-decoration: none; } }
   ul {
-    height: $bar_height / 2;
-    list-style: none;
-    font-size: $font_size * 1.0;
-    font-weight: normal;
-    margin: $bar_height/4 0 0 0;
-    padding: 0;
-    text-align: right; }
+    &.linelist {
+      height: $bar_height / 2;
+      list-style: none;
+      font-size: $font_size * 1.0;
+      font-weight: normal;
+      margin: $bar_height/4 0 0 0;
+      padding: 0;
+      text-align: right; } }
   li {
-    height: $bar_height / 2;
-    margin: 0;
-    padding: 0;
-    float: left;
-    list-style: none;
-    &.column_user {
-      float: left;
-      width: 100px;
-      padding: 0 10px 0 0; }
-    &.column {
+    &.linelist {
+      height: $bar_height / 2;
+      margin: 0;
+      list-style: none;
       float: left;
       padding: 0 10px 0 9px;
-      border-left: 1px solid darkslateblue; } } }
+      &.bordered {
+        border-left: 1px solid darkslateblue; } } }
+}
+.user_btn {
+  margin-top: 4px;
+}
 
 /*---MenubarSpace---------------------------------------*/
 #menu_bar_space { margin: $bar_height 0 0 0; }

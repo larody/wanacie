@@ -13,25 +13,38 @@
       <div id='header'>
         <div id='menu_bar'>
           <div id='menu_bar_left'>
-            <li class='title'><%= link_to (t 'general.title'), root_path %></li>
-        <!--<li class='copy'><%= t 'general.description' %></li>-->
-          </div><!--End of menu_bar_left-->
-
-          <div id='menu_bar_right'>
-            <ul>
-              <% if session[:user_id] %>
-                <% user = User.find(session[:user_id]) %>
-                <li class='column_user'><i class="icon-user"></i><%= link_to user.name, user_by_name_path(user.name) %></li>
-                <li class='column'><i class="icon-signout"></i><%= link_to (t 'general.signout'), signout_path %></li>
-              <% else %>
-                <li class='column'><i class="icon-signin"></i><%= link_to (t 'general.signin'), signin_path %></li>
-                <li class='column'><i class="icon-magic"></i><%= link_to (t 'general.signup'), signup_path %></li>
-              <% end %>
-              <li class='column'><i class="icon-info-sign"></i><%= link_to (t 'general.help'), root_path %></li>
+            <ul class="linelist">
+              <li class='linelist title'><%= link_to (t 'general.title'), root_path %></li>
+              <li class='linelist copy'><%= t 'general.copy' %></li>
             </ul>
-          </div><!--End of menu_bar_right-->
-        </div><!--End of menu_bar-->
-      </div><!--End of header-->
+          </div>
+          <div id='menu_bar_right'>
+            <% if session[:user_id] %>
+              <% user = User.find(session[:user_id]) %>
+              <div class="btn-group user_btn">
+                <%= link_to '<i class="icon-user icon-white"></i>'.html_safe + ' ' + user.name,
+                    '#', :class => 'btn' %>
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to '<i class="icon-info-sign"></i>'.html_safe + ' ' + (t 'general.userinfo'),
+                          user_by_name_path(user.name) %></li>
+                  <li><%= link_to '<i class="icon-cog"></i>'.html_safe + ' ' + (t 'users.edit.title'), account_path %></li>
+                  <li><%= link_to '<i class="icon-book"></i>'.html_safe + ' ' + (t 'general.help'), root_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to '<i class="icon-signout"></i>'.html_safe + ' ' + (t 'general.signout'), signout_path %></li>
+                </ul>
+              </div>
+            <% else %>
+              <ul class="linelist">
+                <li class="linelist"><%= link_to '<i class="icon-signin"></i>'.html_safe +
+                                         ' ' + (t 'general.signin'), signin_path %></li>
+                <li class="linelist bordered"><%= link_to '<i class="icon-magic"></i>'.html_safe +
+                                         ' ' + (t 'general.signup'), signup_path %></li>
+              </ul>
+            <% end %>
+          </div><!--/#menu_bar_right-->
+        </div><!--/#menu_bar-->
+      </div><!--/#header-->
 
       <div id='menu_bar_space'></div>
 
@@ -40,7 +53,6 @@
       <div id='sidebar'>
         <ul><a class='btn btn-large btn-block btn-success' href='<%= new_event_path %>'><span><i class="icon-bullhorn"></i><%= t 'general.ask' %></span></a></ul>
         <ul><a class='btn btn-large btn-block btn-success' href='<%= search_path %>'><span><i class="icon-search"></i><%= t 'general.search' %></span></a></ul>
-        <ul><i class="icon-cogs"></i><%= link_to t('users.edit.title'), account_path %></ul>
       </div><!--End of sidebar-->
 
     </div><!--End of container-->
