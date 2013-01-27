@@ -43,7 +43,7 @@
     <div class="control-group">
       <%= f.label :held_datetime, t('.held_datetime'), :class => 'control-label' %>
       <div class="controls">
-        <%= f.time_select :held_datetime, :default => fixed_datetime, :minute_step => 10 %>
+        <%= f.time_select :held_datetime, :default => @fixed_datetime, :minute_step => 10 %>
       </div>    
     </div>    
 

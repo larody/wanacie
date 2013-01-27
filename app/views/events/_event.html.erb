@@ -11,7 +11,7 @@
     <span class='user'>by <%= link_to organizer.name, user_by_name_path(organizer.name) %></span>
     <span class='posted'><%= time_ago_in_words(p.created_at) %></span>
 
-    <% if session[:user_id] %>
+    <% if signed_in? %>
       <% if organizer.id == session[:user_id] %>
         <span><%= link_to (t '.enclose'), edit_event_path(event) %></span>
       <% else %>

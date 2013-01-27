@@ -57,12 +57,38 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
+    @fixed_datetime = fix_datetime 
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @event }
     end
   end
+
+  def fix_datetime
+    now = Time.now
+    year = now.year
+    day = now.day
+    hour = now.hour
+    min = (now.min/10.0).ceil * 10
+    sec = 59
+
+    if min > 59
+      min = 0 
+      hour += 1
+      if hour > 24
+        hour = 0 
+        day += 1
+        if month > 12
+          month = 0 
+          year += 1
+        end 
+      end 
+    end 
+
+    Time.local(year, month, day, hour, min, sec)
+  end
+  private :fix_datetime
 
 =begin
   # GET /events/1/edit
