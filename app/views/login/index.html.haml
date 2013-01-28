@@ -1,0 +1,32 @@
+#main
+  %h1= t '.title'
+  - if @error
+    #error_explanation
+      %ul
+        %li= @error
+  #form
+    = form_tag({:action => 'auth'}, {:class => 'form-horizontal'}) do
+      .control-group
+        %p= label_tag :username, t('activerecord.attributes.user.name'), :class => 'control-label'
+        .controls
+          .input-prepend
+            %span.add-on
+              %i.icon-user
+            = text_field_tag(:username, '', {:class => 'input-medium', :placeholder => 'username'})
+      .control-group
+        %p= label_tag :password, t('activerecord.attributes.user.password'), :class => 'control-label'
+        .controls
+          .input-prepend
+            %span.add-on
+              %i.icon-key
+            = password_field_tag(:password, '', {:class => 'input-medium', :placeholder => 'password'})
+      = hidden_field_tag :referer, flash[:referer]
+      .control-group
+        .controls
+          .button
+            = submit_tag (t 'helpers.submit.login'), :class => 'btn btn-success'
+    %p
+      = t '.signup_msg'
+      = link_to (t 'general.signup'), signup_path
+  / /#form
+/ /#main

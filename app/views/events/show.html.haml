@@ -1,0 +1,47 @@
+#main
+  - if flash[:comment_created]
+    #congrats
+      %p= flash[:comment_created]
+  - elsif flash[:joined]
+    #congrats
+      %p= flash[:joined]
+  - elsif flash[:event_created]
+    #congrats
+      %p= flash[:event_created]
+  = render @event, :type => :detail
+  #participants
+    - participants = Participant.where(:event_id => @event.id, :organizer => false).select('user_id')
+    %p
+      %span
+        = t '.participant'
+        (#{participants.size}#{t '.unit'}):
+      - participants.each do |p|
+        - user = User.find(p.user_id)
+        %span= link_to user.name, user_by_name_path(user.name)
+  - @comments.each do |c|
+    %div{:class => div = c.msg == '参加します！' ? 'join_comment' : 'comment'}
+      = simple_format(c.msg, {:class => 'message'})
+      %p.crud
+        - user = User.find(c.user_id)
+        %span.user
+          by #{link_to user.name, user_by_name_path(user.name)}
+        %span.posted= time_ago_in_words(c.created_at)
+  - if session[:user_id]
+    = form_for(@comment, :url => url_for(:action => 'comment')) do |f|
+      - if @comment.errors.any?
+        #error_explanation
+          %ul
+            - @comment.errors.full_messages.each do |msg|
+              %li= msg
+      .field
+        = f.label (t '.to_comment')
+        %br/
+        = f.text_area :msg, :class => 'input-xxlarge', :cols => 60, :rows => 3
+      = f.hidden_field :event_id, :value => @event.id
+      = f.hidden_field :user_id, :value => session['user_id']
+      .actions
+        = f.submit (t 'helpers.submit.comment'), class: 'btn btn-success'
+  - else
+    %p= link_to t('.signin_to_comment'), signin_path
+/ End of comment_form
+/ End of main

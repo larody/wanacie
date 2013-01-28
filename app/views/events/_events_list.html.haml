@@ -1,0 +1,7 @@
+- if @events.size > 0
+  = render @events, :type => :simple
+  %p.footer= will_paginate @events,                         |
+      :previous_label => (t 'general.paginate.pre'), |
+      :next_label => (t 'general.paginate.next')     |
+- else
+  %p 現在、募集中のイベントはありません。

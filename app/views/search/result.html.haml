@@ -1,0 +1,17 @@
+#main
+  %h1= t 'search.title'
+  = form_tag(search_result_path, :method => 'get', :id => 'events_search', :class => 'form-inline', :remote => true) do
+    .field
+      .input-prepend
+        %span.add-on
+          %i.icon-map-marker
+        = text_field_tag(:place, '', {:size => 16, :placeholder => t('activerecord.attributes.event.place')})
+      .input-prepend
+        %span.add-on
+          %i.icon-bookmark-empty
+        = text_field_tag(:purpose, '', {:size => 16, :placeholder => t('activerecord.attributes.event.purpose')})
+      %button.btn.btn-success{:name => "commit", :type => "submit"}
+        %i.icon-search
+    %span#progress
+  #result= render 'search_result'
+  / /main

@@ -1,8 +1,0 @@
-<% if @events.size > 0 %>
-  <%= render @events, :type => :simple %>
-  <p class='footer'><%= will_paginate @events,
-    :previous_label => (t 'general.paginate.pre'),
-    :next_label => (t 'general.paginate.next') %></p>
-<% else %>
-  <p>現在、募集中のイベントはありません。</p>
-<% end %>

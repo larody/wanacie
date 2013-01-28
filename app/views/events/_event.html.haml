@@ -1,0 +1,46 @@
+.event
+  - date = event.held_datetime.to_date == Time.now.to_date ? event.held_datetime.strftime("%H時%M分") :
+  - event.held_datetime.strftime("%d日(#{%w(日 月 火 水 木 金 土)[event.held_datetime.wday]}) %H時%M分")
+  - title = '<i class="icon-time"></i>'.html_safe + date + (t '.start') + ' ' + event.purpose + ' @ ' + event.place
+  %p.title= link_to title, event
+  %p.message= event.msg
+  %p.crud
+    - p = Participant.where(:event_id => event.id, :organizer => true).select('user_id, created_at').first
+    - organizer = User.find(p.user_id)
+    %span.user
+      by #{link_to organizer.name, user_by_name_path(organizer.name)}
+    %span.posted= time_ago_in_words(p.created_at)
+    - if signed_in?
+      - if organizer.id == session[:user_id]
+        %span= link_to (t '.enclose'), edit_event_path(event)
+      - else
+        - if Participant.exists?({:event_id => event.id, :user_id => session[:user_id]})
+          - p_num = Participant.where(:event_id => event.id, :organizer => false).count
+          - p_str = p_num > 0 ? '(' + p_num.to_s + ')' : ''
+          = link_to '<i class="icon-plus"></i>'.html_safe + (t '.is_joined') + p_str, event
+        - else
+          - p_num = Participant.where(:event_id => event.id, :organizer => false).count
+          - p_str = p_num > 0 ? '(' + p_num.to_s + ')' : ''
+          %a.btn.btn-success.btn-small{"data-toggle" => "modal", :href => "##{event.id}"}= t('.is_not_joined') + p_str
+    - else
+      = link_to t('.signin_to_join'), signin_path if type == :detail
+    - c_num = Comment.where(:event_id => event.id).count
+    - c_str = c_num > 0 ? '(' + c_num.to_s + ')' : ''
+    = link_to t('.detail') + c_str, event, :class => 'btn btn-small' if type == :simple
+  .modal.hide.fade{:id => event.id}
+    .modal-header
+      %button.close{"data-dismiss" => "modal"} &times;
+      %h3= t('.join_confirmation')
+    .modal-body
+      %p.title= link_to title, event
+      %p.message= event.msg
+      %p.crud
+        %span.user
+          by #{link_to organizer.name, user_by_name_path(organizer.name)}
+        %span.posted= time_ago_in_words(p.created_at)
+    .modal-footer
+      %a.btn.btn-large{"data-dismiss" => "modal", :href => "#"} Cancel
+      = link_to 'Join', {:controller => 'events', :id => event.id, :action => 'join'}, |
+        :method => :post, :class => 'btn btn-success btn-large'                        |
+  / /.modal
+/ /.event

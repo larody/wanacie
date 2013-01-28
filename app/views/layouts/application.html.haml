@@ -1,0 +1,61 @@
+!!!
+%html
+  %head
+    %title= t 'general.title'
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    #container
+      #header
+        #menu_bar
+          #menu_bar_left
+            %ul.linelist
+              %li.linelist.title= link_to (t 'general.title'), root_path
+              %li.linelist.copy= t 'general.copy'
+          #menu_bar_right
+            - if signed_in?
+              - user = User.find(session[:user_id])
+              .btn-group.user_btn
+                = link_to '<i class="icon-user icon-white"></i>'.html_safe + ' ' + user.name, '#', :class => 'btn'
+                %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                  %span.caret
+                %ul.dropdown-menu
+                  %li= link_to '<i class="icon-info-sign"></i>'.html_safe + ' ' + (t 'general.userinfo'), user_by_name_path(user.name)
+                  %li= link_to '<i class="icon-cog"></i>'.html_safe + ' ' + (t 'users.edit.title'), account_path
+                  %li= link_to '<i class="icon-book"></i>'.html_safe + ' ' + (t 'general.help'), root_path
+                  %li.divider
+                  %li= link_to '<i class="icon-signout"></i>'.html_safe + ' ' + (t 'general.signout'), signout_path
+            - else
+              %ul.linelist
+                %li.linelist= link_to '<i class="icon-signin"></i>'.html_safe + ' ' + (t 'general.signin'), signin_path
+                %li.linelist.bordered= link_to '<i class="icon-magic"></i>'.html_safe + ' ' + (t 'general.signup'), signup_path
+          / /#menu_bar_right
+        / /#menu_bar
+      / /#header
+      #menu_bar_space
+      = yield
+      #sidebar
+        %ul/
+        %a.btn.btn-large.btn-block.btn-success{:href => new_event_path}
+          %span
+            %i.icon-bullhorn
+            = t 'general.ask'
+        %ul/
+        %a.btn.btn-large.btn-block.btn-success{:href => search_path}
+          %span
+            %i.icon-search
+            = t 'general.search'
+      / /#sidebar
+    / /#container
+    #footer
+      %a.twitter-share-button{"data-via" => "larody", :href => "https://twitter.com/share"} Tweet
+      :javascript
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
+                if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                    %p.copyright
+        © #{Time.now.year} #{link_to t('general.title'), root_path} -
+        \#{link_to (t 'footer.about.here'), about_path('here')} - Hosted by
+        \#{link_to '@larody', 'https://twitter.com/larody', :target => '_blank'}
+    / /#footer

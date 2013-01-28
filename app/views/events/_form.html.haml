@@ -1,0 +1,26 @@
+- if @event.errors.any?
+  #error_explanation
+    %ul
+      - @event.errors.full_messages.each do |msg|
+        %li= msg
+#form
+  = form_for(@event, :html => {:class => 'form-horizontal'}) do |f|
+    .control-group
+      = f.label :purpose, t('.purpose'), :class => 'control-label'
+      .controls
+        = f.text_field :purpose, :class => 'input-xlarge', :maxlength => 30, :placeholder => t('.purpose-eg')
+    .control-group
+      = f.label :held_datetime, t('.held_datetime'), :class => 'control-label'
+      .controls
+        = f.time_select :held_datetime, :default => @fixed_datetime, :minute_step => 10
+    .control-group
+      = f.label :place, t('.place'), :class => 'control-label'
+      .controls
+        = f.text_field :place, :class => 'input-xlarge', :maxlength => 30, :placeholder => t('.place-eg')
+    .control-group
+      = f.label :msg, t('.msg'), :class => 'control-label'
+      .controls
+        = f.text_area :msg, :class => 'input-xlarge', :cols => 40, :rows => 4, :placeholder => t('.msg-eg')
+    .control-group
+      .controls
+        = f.submit :class => 'btn btn-large btn-success'

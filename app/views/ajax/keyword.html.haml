@@ -1,0 +1,5 @@
+= form_tag(ajax_yahoo_path, :remote => true) do
+  = text_field_tag(:keyword, '', {:size => 30})
+  = submit_tag '検索'
+/ Area to display results
+#result

@@ -1,0 +1,12 @@
+#banner
+  %p= t 'general.description1'
+  %p= t 'general.description2'
+  - unless signed_in?
+    %ul
+      %li
+        %a.btn.btn-large.btn-block.btn-success{:href => signup_path}= t 'general.start'
+/ /#banner
+#main
+  %h1= t '.title'
+  = render 'events_list'
+/ /#main

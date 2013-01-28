@@ -1,0 +1,32 @@
+- if @user.errors.any?
+  #error_explanation
+    %ul
+      - @user.errors.full_messages.each do |msg|
+        %li= msg
+#form
+  = form_for(@user, :html => {:class => 'form-horizontal'}) do |f|
+    .control-group
+      = f.label :name, :class => 'control-label'
+      .controls
+        .input-prepend
+          %span.add-on
+            %i.icon-user
+          = f.text_field :name, :class => 'input-large', :placeholder => 'username'
+    .control-group
+      = f.label :password, :class => 'control-label'
+      .controls
+        .input-prepend
+          %span.add-on
+            %i.icon-key
+          = f.password_field :password, :class => 'input-large', :placeholder => 'password'
+    .control-group
+      = f.label :email, :class => 'control-label'
+      .controls
+        .input-prepend
+          %span.add-on
+            %i.icon-envelope
+          = f.email_field :email, :class => 'input-large', :placeholder => 'email'
+    .control-group
+      .controls
+        .actions
+          = f.submit :class => 'btn btn-large btn-success'
