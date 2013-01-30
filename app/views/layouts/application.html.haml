@@ -52,9 +52,9 @@
       %a.twitter-share-button{"data-via" => "larody", :href => "https://twitter.com/share"} Tweet
       :javascript
         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
-                if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";
-                fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-                    %p.copyright
+        if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+      %p.copyright
         © #{Time.now.year} #{link_to t('general.title'), root_path} -
         \#{link_to (t 'footer.about.here'), about_path('here')} - Hosted by
         \#{link_to '@larody', 'https://twitter.com/larody', :target => '_blank'}

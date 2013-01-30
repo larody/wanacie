@@ -26,4 +26,5 @@ end
 
 group :development do
   gem 'erb2haml'
+  gem 'better_errors'
 end

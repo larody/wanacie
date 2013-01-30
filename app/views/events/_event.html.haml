@@ -23,10 +23,10 @@
           - p_str = p_num > 0 ? '(' + p_num.to_s + ')' : ''
           %a.btn.btn-success.btn-small{"data-toggle" => "modal", :href => "##{event.id}"}= t('.is_not_joined') + p_str
     - else
-      = link_to t('.signin_to_join'), signin_path if type == :detail
+      = link_to_if type == :detail, t('.signin_to_join'), signin_path
     - c_num = Comment.where(:event_id => event.id).count
     - c_str = c_num > 0 ? '(' + c_num.to_s + ')' : ''
-    = link_to t('.detail') + c_str, event, :class => 'btn btn-small' if type == :simple
+    = link_to_if type == :simple, t('.detail') + c_str, event, :class => 'btn btn-small'
   .modal.hide.fade{:id => event.id}
     .modal-header
       %button.close{"data-dismiss" => "modal"} &times;
