@@ -1,7 +1,6 @@
 Wanacie::Application.routes.draw do
-# resources :comments 
-  resources :users, :except => ['show', 'edit']
-  resources :events
+  resources :users, :except => ['index', 'show', 'edit']
+  resources :events, :except => ['edit', 'update', 'destory']
 
   match 'events/:id/join' => 'events#join', :via => :post
 
@@ -22,6 +21,6 @@ Wanacie::Application.routes.draw do
   match 'ajax/yahoo', :via => :put
   match 'ajax/time_update', :via => :put
 
-  match ':controller(/:action(/:id(.:format)))'
+#  match ':controller(/:action(/:id(.:format)))'
   root :to => 'events#index'
 end

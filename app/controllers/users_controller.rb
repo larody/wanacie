@@ -3,17 +3,6 @@
 class UsersController < ApplicationController
   before_filter :check_logined, :except => ['show', 'new', 'create']
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
-  end
-
   # GET /name
   # GET /name.json
   def show
